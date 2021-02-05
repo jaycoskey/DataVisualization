@@ -1,186 +1,57 @@
 strict graph States {
 
-  subgraph cluster_1  {
-    style=invis
-    dummy_1_1 [pos="100.0,100.0" style=invis]
-    dummy_1_2 [pos="100.0,200.0" style=invis]
-    CA [pos="100.0,300.0" ]
-    dummy_1_4 [pos="100.0,400.0" style=invis]
-    dummy_1_5 [pos="100.0,500.0" style=invis]
-    OR [pos="100.0,600.0" ]
-    dummy_1_7 [pos="100.0,700.0" style=invis]
-    dummy_1_8 [pos="100.0,800.0" style=invis]
-    WA [pos="100.0,900.0" ]
-    dummy_1_10 [pos="100.0,1000.0" style=invis]
-  }
-  subgraph cluster_2  {
-    style=invis
-    dummy_2_1 [pos="200.0,100.0" style=invis]
-    dummy_2_2 [pos="200.0,200.0" style=invis]
-    dummy_2_3 [pos="200.0,300.0" style=invis]
-    NV [pos="200.0,400.0" ]
-    dummy_2_5 [pos="200.0,500.0" style=invis]
-    dummy_2_6 [pos="200.0,600.0" style=invis]
-    dummy_2_7 [pos="200.0,700.0" style=invis]
-    dummy_2_8 [pos="200.0,800.0" style=invis]
-    dummy_2_9 [pos="200.0,900.0" style=invis]
-    dummy_2_10 [pos="200.0,1000.0" style=invis]
-  }
-  subgraph cluster_3  {
-    style=invis
-    dummy_3_1 [pos="300.0,100.0" style=invis]
-    dummy_3_2 [pos="300.0,200.0" style=invis]
-    AZ [pos="300.0,300.0" ]
-    UT [pos="300.0,400.0" ]
-    dummy_3_5 [pos="300.0,500.0" style=invis]
-    ID [pos="300.0,600.0" ]
-    dummy_3_7 [pos="300.0,700.0" style=invis]
-    dummy_3_8 [pos="300.0,800.0" style=invis]
-    dummy_3_9 [pos="300.0,900.0" style=invis]
-    dummy_3_10 [pos="300.0,1000.0" style=invis]
-  }
-  subgraph cluster_4  {
-    style=invis
-    dummy_4_1 [pos="400.0,100.0" style=invis]
-    dummy_4_2 [pos="400.0,200.0" style=invis]
-    NM [pos="400.0,300.0" ]
-    CO [pos="400.0,400.0" ]
-    dummy_4_5 [pos="400.0,500.0" style=invis]
-    WY [pos="400.0,600.0" ]
-    dummy_4_7 [pos="400.0,700.0" style=invis]
-    dummy_4_8 [pos="400.0,800.0" style=invis]
-    MT [pos="400.0,900.0" ]
-    dummy_4_10 [pos="400.0,1000.0" style=invis]
-  }
-  subgraph cluster_5  {
-    style=invis
-    TX [pos="500.0,100.0" ]
-    dummy_5_2 [pos="500.0,200.0" style=invis]
-    OK [pos="500.0,300.0" ]
-    KS [pos="500.0,400.0" ]
-    NE [pos="500.0,500.0" ]
-    dummy_5_6 [pos="500.0,600.0" style=invis]
-    SD [pos="500.0,700.0" ]
-    dummy_5_8 [pos="500.0,800.0" style=invis]
-    ND [pos="500.0,900.0" ]
-    dummy_5_10 [pos="500.0,1000.0" style=invis]
-  }
-  subgraph cluster_6  {
-    style=invis
-    LA [pos="600.0,100.0" ]
-    dummy_6_2 [pos="600.0,200.0" style=invis]
-    AR [pos="600.0,300.0" ]
-    MO [pos="600.0,400.0" ]
-    dummy_6_5 [pos="600.0,500.0" style=invis]
-    IA [pos="600.0,600.0" ]
-    dummy_6_7 [pos="600.0,700.0" style=invis]
-    MN [pos="600.0,800.0" ]
-    dummy_6_9 [pos="600.0,900.0" style=invis]
-    dummy_6_10 [pos="600.0,1000.0" style=invis]
-  }
-  subgraph cluster_7  {
-    style=invis
-    dummy_7_1 [pos="700.0,100.0" style=invis]
-    MS [pos="700.0,200.0" ]
-    dummy_7_3 [pos="700.0,300.0" style=invis]
-    dummy_7_4 [pos="700.0,400.0" style=invis]
-    IL [pos="700.0,500.0" ]
-    dummy_7_6 [pos="700.0,600.0" style=invis]
-    dummy_7_7 [pos="700.0,700.0" style=invis]
-    WI [pos="700.0,800.0" ]
-    dummy_7_9 [pos="700.0,900.0" style=invis]
-    dummy_7_10 [pos="700.0,1000.0" style=invis]
-  }
-  subgraph cluster_8  {
-    style=invis
-    dummy_8_1 [pos="800.0,100.0" style=invis]
-    AL [pos="800.0,200.0" ]
-    TN [pos="800.0,300.0" ]
-    KY [pos="800.0,400.0" ]
-    IN [pos="800.0,500.0" ]
-    dummy_8_6 [pos="800.0,600.0" style=invis]
-    dummy_8_7 [pos="800.0,700.0" style=invis]
-    MI [pos="800.0,800.0" ]
-    dummy_8_9 [pos="800.0,900.0" style=invis]
-    dummy_8_10 [pos="800.0,1000.0" style=invis]
-  }
-  subgraph cluster_9  {
-    style=invis
-    FL [pos="900.0,100.0" ]
-    GA [pos="900.0,200.0" ]
-    dummy_9_3 [pos="900.0,300.0" style=invis]
-    dummy_9_4 [pos="900.0,400.0" style=invis]
-    OH [pos="900.0,500.0" ]
-    dummy_9_6 [pos="900.0,600.0" style=invis]
-    dummy_9_7 [pos="900.0,700.0" style=invis]
-    dummy_9_8 [pos="900.0,800.0" style=invis]
-    dummy_9_9 [pos="900.0,900.0" style=invis]
-    dummy_9_10 [pos="900.0,1000.0" style=invis]
-  }
-  subgraph cluster_10  {
-    style=invis
-    dummy_10_1 [pos="1000.0,100.0" style=invis]
-    dummy_10_2 [pos="1000.0,200.0" style=invis]
-    dummy_10_3 [pos="1000.0,300.0" style=invis]
-    dummy_10_4 [pos="1000.0,400.0" style=invis]
-    WV [pos="1000.0,500.0" ]
-    dummy_10_6 [pos="1000.0,600.0" style=invis]
-    dummy_10_7 [pos="1000.0,700.0" style=invis]
-    dummy_10_8 [pos="1000.0,800.0" style=invis]
-    dummy_10_9 [pos="1000.0,900.0" style=invis]
-    dummy_10_10 [pos="1000.0,1000.0" style=invis]
-  }
-  subgraph cluster_11  {
-    style=invis
-    dummy_11_1 [pos="1100.0,100.0" style=invis]
-    SC [pos="1100.0,200.0" ]
-    NC [pos="1100.0,300.0" ]
-    VA [pos="1100.0,400.0" ]
-    MD [pos="1100.0,500.0" ]
-    PA [pos="1100.0,600.0" ]
-    dummy_11_7 [pos="1100.0,700.0" style=invis]
-    NY [pos="1100.0,800.0" ]
-    dummy_11_9 [pos="1100.0,900.0" style=invis]
-    dummy_11_10 [pos="1100.0,1000.0" style=invis]
-  }
-  subgraph cluster_12  {
-    style=invis
-    dummy_12_1 [pos="1200.0,100.0" style=invis]
-    dummy_12_2 [pos="1200.0,200.0" style=invis]
-    dummy_12_3 [pos="1200.0,300.0" style=invis]
-    dummy_12_4 [pos="1200.0,400.0" style=invis]
-    DE [pos="1200.0,500.0" ]
-    NJ [pos="1200.0,600.0" ]
-    CT [pos="1200.0,700.0" ]
-    MA [pos="1200.0,800.0" ]
-    VT [pos="1200.0,900.0" ]
-    dummy_12_10 [pos="1200.0,1000.0" style=invis]
-  }
-  subgraph cluster_13  {
-    style=invis
-    dummy_13_1 [pos="1300.0,100.0" style=invis]
-    HI [pos="1300.0,200.0" ]
-    dummy_13_3 [pos="1300.0,300.0" style=invis]
-    AK [pos="1300.0,400.0" ]
-    dummy_13_5 [pos="1300.0,500.0" style=invis]
-    dummy_13_6 [pos="1300.0,600.0" style=invis]
-    RI [pos="1300.0,700.0" ]
-    dummy_13_8 [pos="1300.0,800.0" style=invis]
-    NH [pos="1300.0,900.0" ]
-    dummy_13_10 [pos="1300.0,1000.0" style=invis]
-  }
-  subgraph cluster_14  {
-    style=invis
-    dummy_14_1 [pos="1400.0,100.0" style=invis]
-    dummy_14_2 [pos="1400.0,200.0" style=invis]
-    dummy_14_3 [pos="1400.0,300.0" style=invis]
-    dummy_14_4 [pos="1400.0,400.0" style=invis]
-    dummy_14_5 [pos="1400.0,500.0" style=invis]
-    dummy_14_6 [pos="1400.0,600.0" style=invis]
-    dummy_14_7 [pos="1400.0,700.0" style=invis]
-    dummy_14_8 [pos="1400.0,800.0" style=invis]
-    dummy_14_9 [pos="1400.0,900.0" style=invis]
-    ME [pos="1400.0,1000.0" ]
+  node [fontsize=10, width=0.3]
+  subgraph cluster_states {
+    AK [pos="650.0,200.0"]
+    AL [pos="400.0,100.0"]
+    AR [pos="300.0,150.0"]
+    AZ [pos="150.0,150.0"]
+    CA [pos="50.0,150.0"]
+    CO [pos="200.0,200.0"]
+    CT [pos="600.0,350.0"]
+    DE [pos="600.0,250.0"]
+    FL [pos="450.0,50.0"]
+    GA [pos="450.0,100.0"]
+    HI [pos="650.0,100.0"]
+    IA [pos="300.0,300.0"]
+    ID [pos="150.0,300.0"]
+    IL [pos="350.0,250.0"]
+    IN [pos="400.0,250.0"]
+    KS [pos="250.0,200.0"]
+    KY [pos="400.0,200.0"]
+    LA [pos="300.0,50.0"]
+    MA [pos="600.0,400.0"]
+    MD [pos="550.0,250.0"]
+    ME [pos="700.0,500.0"]
+    MI [pos="400.0,400.0"]
+    MN [pos="300.0,400.0"]
+    MO [pos="300.0,200.0"]
+    MS [pos="350.0,100.0"]
+    MT [pos="200.0,450.0"]
+    NC [pos="550.0,150.0"]
+    ND [pos="250.0,450.0"]
+    NE [pos="250.0,250.0"]
+    NH [pos="650.0,450.0"]
+    NJ [pos="600.0,300.0"]
+    NM [pos="200.0,150.0"]
+    NV [pos="100.0,200.0"]
+    NY [pos="550.0,400.0"]
+    OH [pos="450.0,250.0"]
+    OK [pos="250.0,150.0"]
+    OR [pos="50.0,300.0"]
+    PA [pos="550.0,300.0"]
+    RI [pos="650.0,350.0"]
+    SC [pos="550.0,100.0"]
+    SD [pos="250.0,350.0"]
+    TN [pos="400.0,150.0"]
+    TX [pos="250.0,50.0"]
+    UT [pos="150.0,200.0"]
+    VA [pos="550.0,200.0"]
+    VT [pos="600.0,450.0"]
+    WA [pos="50.0,450.0"]
+    WI [pos="350.0,400.0"]
+    WV [pos="500.0,250.0"]
+    WY [pos="200.0,300.0"]
   }
 
   AL -- FL [ ]
