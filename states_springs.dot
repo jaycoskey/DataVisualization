@@ -1,0 +1,168 @@
+strict graph States {
+    rankdir=LR
+    splines=line
+
+    AK 
+    AL [pos="-86.79,32.81"]
+    AR [pos="-92.37,34.97"]
+    AZ [pos="-111.43,33.73"]
+    CA [pos="-119.68,36.12"]
+    CO [pos="-105.31,39.06"]
+    CT [pos="-72.76,41.60"]
+    DE [pos="-75.51,39.32"]
+    FL [pos="-81.69,27.77"]
+    GA [pos="-83.64,33.04"]
+    HI 
+    IA [pos="-93.21,42.01"]
+    ID [pos="-114.48,44.24"]
+    IL [pos="-88.99,40.35"]
+    IN [pos="-86.26,39.85"]
+    KS [pos="-96.73,38.53"]
+    KY [pos="-84.67,37.67"]
+    LA [pos="-91.87,31.17"]
+    MA [pos="-71.53,42.23"]
+    MD [pos="-76.80,39.06"]
+    ME [pos="-69.38,44.69"]
+    MI [pos="-84.54,43.33"]
+    MN [pos="-93.90,45.69"]
+    MO [pos="-92.29,38.46"]
+    MS [pos="-89.68,32.74"]
+    MT [pos="-110.45,46.92"]
+    NC [pos="-79.81,35.63"]
+    ND [pos="-99.78,47.53"]
+    NE [pos="-98.27,41.13"]
+    NH [pos="-71.56,43.45"]
+    NJ [pos="-74.52,40.30"]
+    NM [pos="-106.25,34.84"]
+    NV [pos="-117.06,38.31"]
+    NY [pos="-74.95,42.17"]
+    OH [pos="-82.76,40.39"]
+    OK [pos="-96.93,35.57"]
+    OR [pos="-122.07,44.57"]
+    PA [pos="-77.21,40.59"]
+    RI [pos="-71.51,41.68"]
+    SC [pos="-80.95,33.86"]
+    SD [pos="-99.44,44.30"]
+    TN [pos="-86.69,35.75"]
+    TX [pos="-97.56,31.05"]
+    UT [pos="-111.86,40.15"]
+    VA [pos="-78.17,37.77"]
+    VT [pos="-72.71,44.05"]
+    WA [pos="-121.49,47.40"]
+    WI [pos="-89.62,44.27"]
+    WV [pos="-80.95,38.49"]
+    WY [pos="-107.30,42.76"]
+
+    AK -- HI [style=invis]
+
+    NJ -- CT [style=invis]
+    NJ -- MD [style=invis]
+
+    AL -- FL 
+    AL -- GA 
+    AL -- MS 
+    AL -- TN 
+    AR -- LA 
+    AR -- MO 
+    AR -- MS 
+    AR -- OK 
+    AR -- TN 
+    AR -- TX 
+    AZ -- CA 
+    AZ -- CO [color=red style=dashed]
+    AZ -- NM 
+    AZ -- NV 
+    AZ -- UT 
+    CA -- NV 
+    CA -- OR 
+    CO -- KS 
+    CO -- NE 
+    CO -- NM 
+    CO -- OK 
+    CO -- UT 
+    CO -- WY 
+    CT -- MA 
+    CT -- NY 
+    CT -- RI 
+    DE -- MD 
+    DE -- NJ 
+    DE -- PA 
+    FL -- GA 
+    GA -- NC 
+    GA -- SC 
+    GA -- TN 
+    IA -- IL 
+    IA -- MN 
+    IA -- MO 
+    IA -- NE 
+    IA -- SD 
+    IA -- WI 
+    ID -- MT 
+    ID -- NV 
+    ID -- OR 
+    ID -- UT 
+    ID -- WA 
+    ID -- WY 
+    IL -- IN 
+    IL -- KY 
+    IL -- MO 
+    IL -- WI 
+    IN -- KY 
+    IN -- MI 
+    IN -- OH 
+    KS -- MO 
+    KS -- NE 
+    KS -- OK 
+    KY -- MO 
+    KY -- OH 
+    KY -- TN 
+    KY -- VA 
+    KY -- WV 
+    LA -- MS 
+    LA -- TX 
+    MA -- NH 
+    MA -- NY 
+    MA -- RI 
+    MA -- VT 
+    MD -- PA 
+    MD -- VA 
+    MD -- WV 
+    ME -- NH 
+    MI -- OH 
+    MI -- WI 
+    MN -- ND 
+    MN -- SD 
+    MN -- WI 
+    MO -- NE 
+    MO -- OK 
+    MO -- TN 
+    MS -- TN 
+    MT -- ND 
+    MT -- SD 
+    MT -- WY 
+    NC -- SC 
+    NC -- TN 
+    NC -- VA 
+    ND -- SD 
+    NE -- SD 
+    NE -- WY 
+    NH -- VT 
+    NJ -- NY 
+    NJ -- PA 
+    NM -- OK 
+    NM -- TX 
+    NM -- UT [color=red style=dashed]
+    NV -- OR 
+    NV -- UT 
+    NY -- PA 
+    NY -- VT 
+    OH -- PA 
+    OH -- WV 
+    OK -- TX 
+    OR -- WA 
+    PA -- WV 
+    SD -- WY 
+    TN -- VA 
+    UT -- WY 
+    VA -- WV 
+}
