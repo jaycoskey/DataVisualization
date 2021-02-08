@@ -54,14 +54,13 @@ def read_graph(nodes_file, edges_file, order='xy'):
 
 def write_dotfile_planned(g, dotfile_name):
     def write_nodes(f):
-        # writeln(f, 1, 'subgraph cluster_states {')
         for name, attrs in sorted(g.nodes(data=True)):
             scale_factor = 50
             x = attrs['x']
             y = attrs['y']
             pos_spec = f'pos="{scale_factor * x:.1f},{scale_factor * y:.1f}"'
-            writeln(f, 1, f'{name} [{pos_spec}]')
-        # writeln(f, 1, '}')
+            color_spec = ' bgcolor=red style=filled' if name in ['AK', 'HI'] else ''
+            writeln(f, 1, f'{name} [{pos_spec}{color_spec}]')
 
     def write_edges(f):
         for a, b in sorted(g.edges(data=False)):
@@ -87,17 +86,19 @@ def write_dotfile_springs(g, dotfile_name):
 
     def write_nodes(f):
         for name, attrs in sorted(g.nodes(data=True)):
-            if name == 'AK':
-                x = name2attrs['CA']['x']
-                y = name2attrs['TX']['y']
-            elif name == 'HI':
-                x = name2attrs['NM']['x']
-                y = name2attrs['TX']['y']
-            else:
-                x = attrs['x']
-                y = attrs['y']
-            pos_attrs = f'[pos="{x:.2f},{y:.2f}"]'
-            writeln(f, 1, f'{name} {pos_attrs}')
+            x = attrs['x']
+            y = attrs['y']
+            color_attrs = ''
+            if name in ['AK', 'HI']:
+                color_attrs = ' bgcolor=red style=filled'
+                if name == 'AK':
+                    x = name2attrs['CA']['x']
+                    y = name2attrs['TX']['y']
+                elif name == 'HI':
+                    x = name2attrs['NM']['x']
+                    y = name2attrs['TX']['y']
+            pos_attrs = f'pos="{x:.2f},{y:.2f}"'
+            writeln(f, 1, f'{name} [{pos_attrs}{color_attrs}]')
 
     def write_edges(f):
         writeln(f, 1, 'AK -- HI [style=invis]')  # Place nearby, but unlinked

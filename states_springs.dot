@@ -3,7 +3,7 @@ strict graph States {
     splines=line
     node [fixedsize=true fontsize=10 height=0.45 width=0.45]
 
-    AK [pos="-119.68,31.05"]
+    AK [pos="-119.68,31.05" bgcolor=red style=filled]
     AL [pos="-86.79,32.81"]
     AR [pos="-92.37,34.97"]
     AZ [pos="-111.43,33.73"]
@@ -13,7 +13,7 @@ strict graph States {
     DE [pos="-75.51,39.32"]
     FL [pos="-81.69,27.77"]
     GA [pos="-83.64,33.04"]
-    HI [pos="-106.25,31.05"]
+    HI [pos="-106.25,31.05" bgcolor=red style=filled]
     IA [pos="-93.21,42.01"]
     ID [pos="-114.48,44.24"]
     IL [pos="-88.99,40.35"]

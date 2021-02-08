@@ -1,7 +1,7 @@
 strict graph States {
     node [fixedsize=true fontsize=10 height=0.45 width=0.45]
 
-    AK [pos="50.0,50.0"]
+    AK [pos="50.0,50.0" bgcolor=red style=filled]
     AL [pos="400.0,100.0"]
     AR [pos="300.0,150.0"]
     AZ [pos="150.0,150.0"]
@@ -11,7 +11,7 @@ strict graph States {
     DE [pos="600.0,250.0"]
     FL [pos="450.0,50.0"]
     GA [pos="450.0,100.0"]
-    HI [pos="150.0,50.0"]
+    HI [pos="150.0,50.0" bgcolor=red style=filled]
     IA [pos="300.0,300.0"]
     ID [pos="150.0,300.0"]
     IL [pos="350.0,250.0"]
