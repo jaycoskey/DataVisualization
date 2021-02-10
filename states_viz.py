@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
 
 import argparse
+from collections import defaultdict
+from copy import deepcopy
 import networkx as nx
 import sys
 
 
-GRAY_ATTRS = 'fillcolor=lightgray style=filled'
+GRAY_FILL = 'style=filled fillcolor=lightgray'
 
 STATES_CONN_NODE  = [('AZ','CO'), ('NM','UT')]
 STATES_WEST_COAST = ['WA', 'OR', 'CA']
 
+STATES_DOTFILE_GRIDIFY = 'states_gridify.dot'
 STATES_DOTFILE_PLANNED = 'states_planned.dot'
 STATES_DOTFILE_SPRINGS = 'states_springs.dot'
 
 STATES_FILE_COORDS  = 'states.coords'
 STATES_FILE_EDGES   = 'states.edges'
+
+# Note: Use caution when crossing International Date Line
 STATES_FILE_LATLONG = 'states.latlong'
 
 
@@ -52,14 +57,161 @@ def read_graph(nodes_file, edges_file, order='xy'):
     return result
 
 
-def write_dotfile_planned(g, dotfile_name):
+# Write to named dotfile after aligning lat/long coords to grid
+# Start with the original grid, and find the x and y ordinals for each of the nodes.
+# Repeatedly modify the (originally ordinal) coordinates by merging x-coords or y-coords.
+# Finish and return modified graph when reaching a stopping condition.
+#
+# Details:
+#   * At each step, consider the percentage gap between x coordinates and y coordinates,
+#     and merge the two (x or y) coordinates with the smallest percentage gap,
+#     among those merges that would not cause a constraint violation.
+#   * Constraints:
+#       - Graph is planar (motivated by example of adjacency in a geographical map)
+#       - Oblique edges (neither horiz nor vert) match N-S and W-E ordering
+#       - x ordinals start at 0, and form an integral set without gaps. Same for y.
+# # Note:
+#   * This is a proof of concept with 50 nodes. Efficiency and conciseness are not priorites.
+#
+def write_dotfile_gridify(g, dotfile, verbose=False):
+    name2attrs = {name:attrs for name,attrs in g.nodes(data=True)}
+    s2x = lambda s: name2attrs[s]['x']
+    s2y = lambda s: name2attrs[s]['y']
+
+    def avg(items):
+        return sum(items) / len(items)
+
+    def get_orddict(d, val2sortkey):
+        return { name:ordinal
+                 for (ordinal, name) in enumerate(sorted(d.keys(), key=lambda k: val2sortkey(d[k])))
+               }
+
+    def gridify(g, maxiter=100):
+        # ----------------------------------------
+        xs = [attrs['x'] for attrs in name2attrs.values()]
+        xspan = max(xs) - min(xs)
+        # ----------
+        ys = [attrs['y'] for attrs in name2attrs.values()]
+        yspan = max(ys) - min(ys)
+        # ----------------------------------------
+
+        s2xord = get_orddict(name2attrs, lambda attrs: attrs['x'])
+        s2yord = get_orddict(name2attrs, lambda attrs: attrs['y'])
+
+        gord = deepcopy(g)
+        for s in name2attrs.keys():
+            nx.set_node_attributes(gord, values={s:s2xord[s]}, name='x')
+            nx.set_node_attributes(gord, values={s:s2yord[s]}, name='y')
+
+        itercount = 0
+        while True:
+            if itercount >= maxiter:
+                break
+            itercount += 1
+            verbose and print(f'# ========================================')
+            verbose and print(f'INFO: Starting iteration {itercount}')
+
+            # ----------------------------------------
+            xord2ss = invert_dict(s2xord)
+            xords = sorted(xord2ss.keys())
+            xord2xavg = {xord:avg(list(map(s2x, xord2ss[xord]))) for xord in xords}
+            # ----------
+            yord2ss = invert_dict(s2yord)
+            yords = sorted(yord2ss.keys())
+            yord2yavg = {yord:avg(list(map(s2y, yord2ss[yord]))) for yord in yords}
+            # ----------------------------------------
+
+            # Percentage Longitude/latitude gap between ordinal keys i & i+1
+            xord_pgaps = { xord : 100 * (xord2xavg[xord+1] - xord2xavg[xord]) / xspan
+                           for xord in range(max(xords))
+                         }
+            yord_pgaps = { yord : 100 * (yord2yavg[yord+1] - yord2yavg[yord]) / yspan
+                           for yord in range(max(yords))
+                         }
+            # TODO: Merge the two pgap lists into one.
+
+            # ----------------------------------------
+            print(f'\t====================')
+            print(f'\txord_pgaps:')
+            for k in range(max(xords)):
+                print(f'\t\txord_pgaps[{k}] from {xord2ss[k]} to {xord2ss[k+1]}: {xord_pgaps[k]:.4f}')
+            print(f'\t====================')
+            print(f'\tyord_pgaps:')
+            for k in range(max(yords)):
+                print(f'\t\tyord_pgaps[{k}] from {yord2ss[k]} to {yord2ss[k+1]}: {yord_pgaps[k]:.4f}')
+            print(f'\t====================')
+            # ----------------------------------------
+
+            xord_pgap_min = min(xord_pgaps.items(), key=lambda xord_pgap: xord_pgap[1])
+            yord_pgap_min = min(yord_pgaps.items(), key=lambda yord_pgap: yord_pgap[1])
+
+            # ----------------------------------------
+            # Unify the closest pair of ordinal coords.
+            # TODO: Implement constraint-checking.
+            # TODO: Use a temporary graph as a candidate. Commit changes on constraint failure.
+            # TODO: Prioritize unification candidates. Move down the list on constraint failure.
+            if xord_pgap_min[1] < yord_pgap_min[1]:
+                if verbose:
+                    print(f'INFO: Gap is smallest @ xord={xord_pgap_min[0]}: longitude_pgap={xord_pgap_min[1]:.4f}')
+                    print(f'INFO:   --> Between {xord2ss[xord_pgap_min[0]]} and {xord2ss[xord_pgap_min[0] + 1]}')
+
+                # Unify two ordinal coords, and shift in more distal ones
+                for ordk in range(xord_pgap_min[0]+1, xords[-1]+1):
+                    for s in xord2ss[ordk]:
+                        # verbose and print(f'INFO: Shifting west @ xord={ordk}: {s}')
+                        s2xord[s] -= 1
+                        # gord.nodes[s]['x'] = s2xord[s]  # Not supported. Use next line instead.
+                        nx.set_node_attributes(gord, values={s:s2xord[s]}, name='x')
+            else:
+                if verbose:
+                    print(f'INFO: Gap is smallest @ yord={yord_pgap_min[0]}: latitude_pgap={yord_pgap_min[1]:.6f}')
+                    print(f'INFO:   --> Between {yord2ss[yord_pgap_min[0]]} and {yord2ss[yord_pgap_min[0] + 1]}')
+
+                # Unify two ordinal coords, and shift in more distal ones
+                for ordk in range(yord_pgap_min[0]+1, yords[-1]+1):
+                    for s in yord2ss[ordk]:
+                        # verbose and print(f'INFO: Shifting south @ xord={ordk}: {s}')
+                        s2yord[s] -= 1
+                        # gord.nodes[s]['y'] = s2yord[s]  # Not supported. Use next line instead.
+                        nx.set_node_attributes(gord, values={s:s2yord[s]}, name='y')
+
+        verbose and print(f'# ========================================')
+        verbose and print(f'INFO: Completed {itercount} iterations')
+
+        nx.set_node_attributes(gord, values={'AK':int(gord.nodes(data=True)['CA']['x'])}, name='x')
+        nx.set_node_attributes(gord, values={'AK':int(gord.nodes(data=True)['TX']['y'])}, name='y')
+
+        nx.set_node_attributes(gord, values={'HI':int(gord.nodes(data=True)['AZ']['x'])}, name='x')
+        nx.set_node_attributes(gord, values={'HI':int(gord.nodes(data=True)['TX']['y'])}, name='y')
+
+        return gord
+
+    def invert_dict(d):
+        result = defaultdict(list)
+        for (k,v) in d.items():
+            result[v].append(k)
+        return result
+
+    def xpos_avg(names):
+        return avg(lambda name: name2attrs[name]['x'], names)
+
+    def ypos_avg(names):
+        return avg(lambda name: name2attrs[name]['y'], names)
+
+    gridified = gridify(g, maxiter=50)
+    write_dotfile_planned(gridified, dotfile)
+
+
+# Write to named dotfile using coordinates in graph argument
+#
+def write_dotfile_planned(g, dotfile):
     def write_nodes(f):
         for name, attrs in sorted(g.nodes(data=True)):
             scale_factor = 50
             x = attrs['x']
             y = attrs['y']
             pos_spec = f'pos="{scale_factor * x:.1f},{scale_factor * y:.1f}"'
-            color_spec = ' bgcolor=red style=filled' if name in ['AK', 'HI'] else ''
+            color_spec = f' {GRAY_FILL}' if name in ['AK', 'HI'] else ''
             writeln(f, 1, f'{name} [{pos_spec}{color_spec}]')
 
     def write_edges(f):
@@ -71,7 +223,7 @@ def write_dotfile_planned(g, dotfile_name):
                 attrs = f'[{color} {style}]' if is_conn_node else ''
                 writeln(f, 1, f'{a} -- {b} {attrs}')
 
-    with open(dotfile_name, 'w') as f:
+    with open(dotfile, 'w') as f:
         writeln(f, 0, 'strict graph States {')
         writeln(f, 1, 'node [fixedsize=true fontsize=10 height=0.45 width=0.45]')
         writeln(f)
@@ -81,7 +233,9 @@ def write_dotfile_planned(g, dotfile_name):
         writeln(f, 0, '}')
 
 
-def write_dotfile_springs(g, dotfile_name):
+# Write to named dotfile using Graphviz layout algorithm
+#
+def write_dotfile_springs(g, dotfile):
     name2attrs = {name:attrs for name,attrs in g.nodes(data=True)}
 
     def write_nodes(f):
@@ -90,7 +244,7 @@ def write_dotfile_springs(g, dotfile_name):
             y = attrs['y']
             color_attrs = ''
             if name in ['AK', 'HI']:
-                color_attrs = ' bgcolor=red style=filled'
+                color_attrs = f' {GRAY_FILL}'
                 if name == 'AK':
                     x = name2attrs['CA']['x']
                     y = name2attrs['TX']['y']
@@ -113,7 +267,7 @@ def write_dotfile_springs(g, dotfile_name):
                 edge_attrs = '[color=red style=dashed]' if is4 else ''
                 writeln(f, 1, f'{a} -- {b} {edge_attrs}')
 
-    with open(dotfile_name, 'w') as f:
+    with open(dotfile, 'w') as f:
         writeln(f, 0, 'strict graph States {')
         writeln(f, 1, 'rankdir=LR')
         writeln(f, 1, 'splines=line')
@@ -141,15 +295,25 @@ def test_graph(state_graph):
 
 # ----------------------------------------
 
+def make_dotfile_gridify():
+    src = read_graph( nodes_file=STATES_FILE_LATLONG
+                    , edges_file=STATES_FILE_EDGES
+                    , order='yx'
+                    )
+    test_graph(src)
+    write_dotfile_gridify( g=src
+                         , dotfile=STATES_DOTFILE_GRIDIFY
+                         , verbose=True
+                         )
+
 def make_dotfile_planned():
     src = read_graph( nodes_file=STATES_FILE_COORDS
                     , edges_file=STATES_FILE_EDGES
                     )
     test_graph(src)
     write_dotfile_planned( g=src
-                         , dotfile_name=STATES_DOTFILE_PLANNED
+                         , dotfile=STATES_DOTFILE_PLANNED
                          )
-
 
 def make_dotfile_springs():
     src = read_graph( nodes_file=STATES_FILE_LATLONG
@@ -157,7 +321,9 @@ def make_dotfile_springs():
                     , order='yx'
                     )
     test_graph(src)
-    write_dotfile_springs(g=src, dotfile_name=STATES_DOTFILE_SPRINGS)
+    write_dotfile_springs( g=src
+                         , dotfile=STATES_DOTFILE_SPRINGS
+                         )
 
 
 if __name__ == '__main__':
@@ -165,14 +331,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser( prog=prog
                                     , description='Visualize layout of US states'
                                     )
+    parser.add_argument('-g', '--gridify', action='store_true')
     parser.add_argument('-p', '--planned', action='store_true')
     parser.add_argument('-s', '--springs', action='store_true')
     args = parser.parse_args(sys.argv[1:])
 
-    if (not args.planned) and (not args.springs):
+    if (not args.gridify) and (not args.planned) and (not args.springs):
         print(f'{prog}: At least one output flag required.')
         parser.print_help(sys.stderr)
         sys.exit(1)
+    if args.gridify:
+        make_dotfile_gridify()
     if args.planned:
         make_dotfile_planned()
     if args.springs:
