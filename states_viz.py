@@ -67,6 +67,7 @@ def read_graph(nodes_file, edges_file, order='xy'):
 #     and merge the two (x or y) coordinates with the smallest percentage gap,
 #     among those merges that would not cause a constraint violation.
 #   * Constraints:
+#       - No two nodes share the same x & y ordinal coords.
 #       - Graph is planar (motivated by example of adjacency in a geographical map)
 #       - Oblique edges (neither horiz nor vert) match N-S and W-E ordering
 #       - x ordinals start at 0, and form an integral set without gaps. Same for y.
@@ -82,9 +83,10 @@ def write_dotfile_gridify(g, dotfile, verbose=False):
         return sum(items) / len(items)
 
     def get_orddict(d, val2sortkey):
-        return { name:ordinal
-                 for (ordinal, name) in enumerate(sorted(d.keys(), key=lambda k: val2sortkey(d[k])))
-               }
+        result = { name:ordinal
+                   for (ordinal, name) in enumerate(sorted(d.keys(), key=lambda k: val2sortkey(d[k])))
+                 }
+        return result
 
     def gridify(g, maxiter=100):
         # ----------------------------------------
@@ -122,58 +124,55 @@ def write_dotfile_gridify(g, dotfile, verbose=False):
             # ----------------------------------------
 
             # Percentage Longitude/latitude gap between ordinal keys i & i+1
-            xord_pgaps = { xord : 100 * (xord2xavg[xord+1] - xord2xavg[xord]) / xspan
+            xord_pgaps = { ('x', xord) : 100.0 * (xord2xavg[xord+1] - xord2xavg[xord]) / xspan
                            for xord in range(max(xords))
                          }
-            yord_pgaps = { yord : 100 * (yord2yavg[yord+1] - yord2yavg[yord]) / yspan
+            yord_pgaps = { ('y', yord) : 100.0 * (yord2yavg[yord+1] - yord2yavg[yord]) / yspan
                            for yord in range(max(yords))
                          }
-            # TODO: Merge the two pgap lists into one.
 
-            # ----------------------------------------
-            print(f'\t====================')
-            print(f'\txord_pgaps:')
-            for k in range(max(xords)):
-                print(f'\t\txord_pgaps[{k}] from {xord2ss[k]} to {xord2ss[k+1]}: {xord_pgaps[k]:.4f}')
-            print(f'\t====================')
-            print(f'\tyord_pgaps:')
-            for k in range(max(yords)):
-                print(f'\t\tyord_pgaps[{k}] from {yord2ss[k]} to {yord2ss[k+1]}: {yord_pgaps[k]:.4f}')
-            print(f'\t====================')
-            # ----------------------------------------
+            pgaps = deepcopy(xord_pgaps)
+            pgaps.update(yord_pgaps)
+            pgaps = sorted(pgaps.items(), key=lambda item: item[1])
 
-            xord_pgap_min = min(xord_pgaps.items(), key=lambda xord_pgap: xord_pgap[1])
-            yord_pgap_min = min(yord_pgaps.items(), key=lambda yord_pgap: yord_pgap[1])
-
-            # ----------------------------------------
-            # Unify the closest pair of ordinal coords.
-            # TODO: Implement constraint-checking.
-            # TODO: Use a temporary graph as a candidate. Commit changes on constraint failure.
-            # TODO: Prioritize unification candidates. Move down the list on constraint failure.
-            if xord_pgap_min[1] < yord_pgap_min[1]:
+            cand_count = 0
+            for pgap_candidate in pgaps: 
+                cand_count += 1
+                # Unify the closest pair of ordinal coords.
+                # TODO: Implement constraint-checking.
+                # TODO: Use a temporary graph as a candidate. Commit changes on constraint failure.
+                # TODO: When a merging of ordinal coords would cause a constraint failure,
+                # TODO:   search down the prioritized list for a suitable candidate.
+                pgap_axis = pgap_candidate[0][0]
+                pgap_ord  = pgap_candidate[0][1]
+                pgap_val  = pgap_candidate[1]
+    
+                max_ord = max(xords) if pgap_axis == 'x' else max(yords)
+    
                 if verbose:
-                    print(f'INFO: Gap is smallest @ xord={xord_pgap_min[0]}: longitude_pgap={xord_pgap_min[1]:.4f}')
-                    print(f'INFO:   --> Between {xord2ss[xord_pgap_min[0]]} and {xord2ss[xord_pgap_min[0] + 1]}')
-
-                # Unify two ordinal coords, and shift in more distal ones
-                for ordk in range(xord_pgap_min[0]+1, xords[-1]+1):
-                    for s in xord2ss[ordk]:
-                        # verbose and print(f'INFO: Shifting west @ xord={ordk}: {s}')
-                        s2xord[s] -= 1
-                        # gord.nodes[s]['x'] = s2xord[s]  # Not supported. Use next line instead.
-                        nx.set_node_attributes(gord, values={s:s2xord[s]}, name='x')
-            else:
-                if verbose:
-                    print(f'INFO: Gap is smallest @ yord={yord_pgap_min[0]}: latitude_pgap={yord_pgap_min[1]:.6f}')
-                    print(f'INFO:   --> Between {yord2ss[yord_pgap_min[0]]} and {yord2ss[yord_pgap_min[0] + 1]}')
-
-                # Unify two ordinal coords, and shift in more distal ones
-                for ordk in range(yord_pgap_min[0]+1, yords[-1]+1):
-                    for s in yord2ss[ordk]:
-                        # verbose and print(f'INFO: Shifting south @ xord={ordk}: {s}')
-                        s2yord[s] -= 1
-                        # gord.nodes[s]['y'] = s2yord[s]  # Not supported. Use next line instead.
-                        nx.set_node_attributes(gord, values={s:s2yord[s]}, name='y')
+                    print(f'INFO: Gap is smallest @ {pgap_axis}ord={pgap_ord}: pgap={pgap_val:.4f}')
+                    if pgap_axis == 'x':
+                        print(f'INFO:   --> Between {xord2ss[pgap_ord]} and {xord2ss[pgap_ord + 1]}')
+                    else:
+                        print(f'INFO:   --> Between {yord2ss[pgap_ord]} and {yord2ss[pgap_ord + 1]}')
+    
+                if pgap_axis == 'x':
+                    # Unify two ordinal coords, and shift in more distal ones
+                    for ordk in range(pgap_ord + 1, max_ord + 1):
+                        for s in xord2ss[ordk]:
+                            # verbose and print(f'INFO: Shifting west @ xord={ordk}: {s}')
+                            s2xord[s] -= 1
+                            # gord.nodes[s]['x'] = s2xord[s]  # Not supported. Use next line instead.
+                            nx.set_node_attributes(gord, values={s:s2xord[s]}, name='x')
+                else:
+                    # Unify two ordinal coords, and shift in more distal ones
+                    for ordk in range(pgap_ord + 1, max_ord + 1):
+                        for s in yord2ss[ordk]:
+                            # verbose and print(f'INFO: Shifting south @ yord={ordk}: {s}')
+                            s2yord[s] -= 1
+                            # gord.nodes[s]['y'] = s2yord[s]  # Not supported. Use next line instead.
+                            nx.set_node_attributes(gord, values={s:s2yord[s]}, name='y')
+                break
 
         verbose and print(f'# ========================================')
         verbose and print(f'INFO: Completed {itercount} iterations')
@@ -303,7 +302,7 @@ def make_dotfile_gridify():
     test_graph(src)
     write_dotfile_gridify( g=src
                          , dotfile=STATES_DOTFILE_GRIDIFY
-                         , verbose=True
+                         , verbose=False
                          )
 
 def make_dotfile_planned():
