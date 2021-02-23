@@ -294,7 +294,7 @@ def write_dotfile_gridify(g, dotfile, verbose=False):
                 prefix = f'\tINFO: gridify: {pgap_axis}ord={pgap_ord}'
                 verbose and print(f'{prefix}: Post-squish: sig(gcand)={signature(gcand, True)}')
 
-                is_cand_valid_nodes = is_valid_distinct_nodes(gcand) 
+                is_cand_valid_nodes = is_valid_distinct_nodes(gcand)
                 is_cand_valid_edges = is_valid_intersections(gcand)
                 is_cand_valid = is_cand_valid_nodes and is_cand_valid_edges
                 if is_cand_valid:
@@ -359,7 +359,9 @@ def write_dotfile_gridify(g, dotfile, verbose=False):
             writeln(f, 0, f'# Written by states_viz when creating "gridify" visualization.')
             s2xyords = {s:xyords for s,xyords in gridified.nodes(data=True)}
             for s, xyords in s2xyords.items():
-                writeln(f, 0, f'{s} {xyords["x"]:>2} {xyords["y"]:>2}')
+                x = xyords["x"]
+                y = xyords["y"]
+                writeln(f, 0, f'{s} {x:>2} {y:>2}')
     write_dotfile_planned(gridified, dotfile)
 
 
@@ -387,7 +389,7 @@ def write_dotfile_planned(g, dotfile):
 
     with open(dotfile, 'w') as f:
         writeln(f, 0, 'strict graph States {')
-        writeln(f, 1, 'node [fixedsize=true fontsize=10 height=0.45 width=0.45]')
+        writeln(f, 1, 'node [fixedsize=true fontsize=10 height=0.30 width=0.30]')
         writeln(f)
         write_nodes(f)
         writeln(f)
@@ -513,8 +515,13 @@ def make_dotfile_gridify():
                          , verbose=True
                          )
 
-def make_dotfile_planned():
-    g = read_graph( nodes_file=STATES_INFILE_COORDS
+def make_dotfile_planned(coords_file=None):
+    if coords_file:
+        print(f'Using custom coords file: <<{coords_file}>>')
+    else:
+        coords_file = STATES_INFILE_COORDS
+        print(f'Using default coords file: {coords_file}')
+    g = read_graph( nodes_file=coords_file
                   , edges_file=STATES_INFILE_EDGES
                   )
     customize_graph(g, STATES_REPOSITIONS)
@@ -544,6 +551,7 @@ if __name__ == '__main__':
     parser.add_argument('-g', '--gridify',  action='store_true')
     parser.add_argument('-p', '--planned',  action='store_true')
     parser.add_argument('-s', '--springs',  action='store_true')
+    parser.add_argument('-f', '--file',     action='store')
     args = parser.parse_args(sys.argv[1:])
 
     if (not args.gridify) and (not args.planned) and (not args.springs):
@@ -553,6 +561,6 @@ if __name__ == '__main__':
     if args.gridify:
         make_dotfile_gridify()
     if args.planned:
-        make_dotfile_planned()
+        make_dotfile_planned(coords_file=args.file)
     if args.springs:
         make_dotfile_springs()
