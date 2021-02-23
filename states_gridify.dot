@@ -1,162 +1,163 @@
 strict graph States {
     node [fixedsize=true fontsize=10 height=0.45 width=0.45]
 
-    AK [pos="150.0,150.0" style=filled fillcolor=lightgray]
-    AL [pos="850.0,150.0"]
-    AR [pos="750.0,250.0"]
-    AZ [pos="300.0,200.0"]
-    CA [pos="150.0,350.0"]
-    CO [pos="400.0,500.0"]
-    CT [pos="1300.0,600.0"]
-    DE [pos="1200.0,450.0"]
-    FL [pos="1050.0,50.0"]
-    GA [pos="1000.0,150.0"]
-    HI [pos="300.0,150.0" style=filled fillcolor=lightgray]
-    IA [pos="700.0,600.0"]
-    ID [pos="250.0,750.0"]
-    IL [pos="800.0,550.0"]
-    IN [pos="900.0,550.0"]
-    KS [pos="550.0,450.0"]
-    KY [pos="950.0,400.0"]
-    LA [pos="750.0,100.0"]
-    MA [pos="1350.0,650.0"]
-    MD [pos="1150.0,450.0"]
-    ME [pos="1400.0,850.0"]
-    MI [pos="900.0,800.0"]
-    MN [pos="650.0,900.0"]
-    MO [pos="750.0,400.0"]
-    MS [pos="800.0,150.0"]
-    MT [pos="300.0,900.0"]
-    NC [pos="1100.0,300.0"]
-    ND [pos="450.0,950.0"]
-    NE [pos="500.0,600.0"]
-    NH [pos="1350.0,700.0"]
-    NJ [pos="1250.0,550.0"]
-    NM [pos="400.0,250.0"]
-    NV [pos="200.0,450.0"]
-    NY [pos="1250.0,700.0"]
-    OH [pos="1000.0,550.0"]
-    OK [pos="600.0,250.0"]
-    OR [pos="100.0,750.0"]
-    PA [pos="1150.0,600.0"]
-    RI [pos="1350.0,600.0"]
-    SC [pos="1050.0,200.0"]
-    SD [pos="500.0,750.0"]
-    TN [pos="850.0,300.0"]
-    TX [pos="500.0,150.0"]
-    UT [pos="300.0,500.0"]
-    VA [pos="1100.0,400.0"]
-    VT [pos="1300.0,800.0"]
-    WA [pos="100.0,950.0"]
-    WI [pos="800.0,750.0"]
-    WV [pos="1050.0,450.0"]
-    WY [pos="350.0,700.0"]
+    AK [pos="0.0,50.0" style=filled fillcolor=lightgray]
+    AL [pos="350.0,50.0"]
+    AR [pos="250.0,150.0"]
+    AZ [pos="100.0,100.0"]
+    CA [pos="0.0,250.0"]
+    CO [pos="150.0,300.0"]
+    CT [pos="600.0,350.0"]
+    DE [pos="550.0,300.0"]
+    FL [pos="450.0,0.0"]
+    GA [pos="400.0,50.0"]
+    HI [pos="100.0,50.0" style=filled fillcolor=lightgray]
+    IA [pos="250.0,350.0"]
+    ID [pos="50.0,450.0"]
+    IL [pos="300.0,350.0"]
+    IN [pos="350.0,350.0"]
+    KS [pos="200.0,300.0"]
+    KY [pos="400.0,250.0"]
+    LA [pos="250.0,50.0"]
+    MA [pos="650.0,400.0"]
+    MD [pos="500.0,300.0"]
+    ME [pos="700.0,450.0"]
+    MI [pos="350.0,450.0"]
+    MN [pos="250.0,500.0"]
+    MO [pos="250.0,250.0"]
+    MS [pos="300.0,50.0"]
+    MT [pos="100.0,500.0"]
+    NC [pos="500.0,200.0"]
+    ND [pos="200.0,500.0"]
+    NE [pos="200.0,350.0"]
+    NH [pos="650.0,450.0"]
+    NJ [pos="550.0,350.0"]
+    NM [pos="150.0,150.0"]
+    NV [pos="50.0,300.0"]
+    NY [pos="550.0,400.0"]
+    OH [pos="400.0,350.0"]
+    OK [pos="200.0,150.0"]
+    OR [pos="0.0,450.0"]
+    PA [pos="500.0,350.0"]
+    RI [pos="650.0,350.0"]
+    SC [pos="450.0,100.0"]
+    SD [pos="200.0,450.0"]
+    TN [pos="350.0,200.0"]
+    TX [pos="200.0,50.0"]
+    UT [pos="100.0,300.0"]
+    VA [pos="500.0,250.0"]
+    VT [pos="600.0,450.0"]
+    WA [pos="0.0,500.0"]
+    WI [pos="300.0,450.0"]
+    WV [pos="450.0,300.0"]
+    WY [pos="150.0,400.0"]
 
-    AL -- FL 
-    AL -- GA 
-    AL -- MS 
-    AL -- TN 
-    AR -- LA 
-    AR -- MO 
-    AR -- MS 
-    AR -- OK 
-    AR -- TN 
-    AR -- TX 
-    AZ -- CA 
+    AL -- FL
+    AL -- GA
+    AL -- MS
+    AL -- TN
+    AR -- LA
+    AR -- MO
+    AR -- MS
+    AR -- OK
+    AR -- TN
+    AR -- TX
+    AZ -- CA
+    AZ -- NM
+    AZ -- NV
+    AZ -- UT
+    CA -- NV
+    CA -- OR
+    CO -- KS
+    CO -- NE
+    CO -- NM
+    CO -- OK
+    CO -- UT
+    CO -- WY
+    CT -- MA
+    CT -- NY
+    CT -- RI
+    DE -- MD
+    DE -- NJ
+    DE -- PA
+    FL -- GA
+    GA -- NC
+    GA -- SC
+    GA -- TN
+    IA -- IL
+    IA -- MN
+    IA -- MO
+    IA -- NE
+    IA -- SD
+    IA -- WI
+    ID -- MT
+    ID -- NV
+    ID -- OR
+    ID -- UT
+    ID -- WA
+    ID -- WY
+    IL -- IN
+    IL -- KY
+    IL -- MO
+    IL -- WI
+    IN -- KY
+    IN -- MI
+    IN -- OH
+    KS -- MO
+    KS -- NE
+    KS -- OK
+    KY -- MO
+    KY -- OH
+    KY -- TN
+    KY -- VA
+    KY -- WV
+    LA -- MS
+    LA -- TX
+    MA -- NH
+    MA -- NY
+    MA -- RI
+    MA -- VT
+    MD -- PA
+    MD -- VA
+    MD -- WV
+    ME -- NH
+    MI -- OH
+    MI -- WI
+    MN -- ND
+    MN -- SD
+    MN -- WI
+    MO -- NE
+    MO -- OK
+    MO -- TN
+    MS -- TN
+    MT -- ND
+    MT -- SD
+    MT -- WY
+    NC -- SC
+    NC -- TN
+    NC -- VA
+    ND -- SD
+    NE -- SD
+    NE -- WY
+    NH -- VT
+    NJ -- NY
+    NJ -- PA
+    NM -- OK
+    NM -- TX
+    NV -- OR
+    NV -- UT
+    NY -- PA
+    NY -- VT
+    OH -- PA
+    OH -- WV
+    OK -- TX
+    OR -- WA
+    PA -- WV
+    SD -- WY
+    TN -- VA
+    UT -- WY
+    VA -- WV
     AZ -- CO [color=red style=dashed]
-    AZ -- NM 
-    AZ -- NV 
-    AZ -- UT 
-    CA -- NV 
-    CA -- OR 
-    CO -- KS 
-    CO -- NE 
-    CO -- NM 
-    CO -- OK 
-    CO -- UT 
-    CO -- WY 
-    CT -- MA 
-    CT -- NY 
-    CT -- RI 
-    DE -- MD 
-    DE -- NJ 
-    DE -- PA 
-    FL -- GA 
-    GA -- NC 
-    GA -- SC 
-    GA -- TN 
-    IA -- IL 
-    IA -- MN 
-    IA -- MO 
-    IA -- NE 
-    IA -- SD 
-    IA -- WI 
-    ID -- MT 
-    ID -- NV 
-    ID -- OR 
-    ID -- UT 
-    ID -- WA 
-    ID -- WY 
-    IL -- IN 
-    IL -- KY 
-    IL -- MO 
-    IL -- WI 
-    IN -- KY 
-    IN -- MI 
-    IN -- OH 
-    KS -- MO 
-    KS -- NE 
-    KS -- OK 
-    KY -- MO 
-    KY -- OH 
-    KY -- TN 
-    KY -- VA 
-    KY -- WV 
-    LA -- MS 
-    LA -- TX 
-    MA -- NH 
-    MA -- NY 
-    MA -- RI 
-    MA -- VT 
-    MD -- PA 
-    MD -- VA 
-    MD -- WV 
-    ME -- NH 
-    MI -- OH 
-    MI -- WI 
-    MN -- ND 
-    MN -- SD 
-    MN -- WI 
-    MO -- NE 
-    MO -- OK 
-    MO -- TN 
-    MS -- TN 
-    MT -- ND 
-    MT -- SD 
-    MT -- WY 
-    NC -- SC 
-    NC -- TN 
-    NC -- VA 
-    ND -- SD 
-    NE -- SD 
-    NE -- WY 
-    NH -- VT 
-    NJ -- NY 
-    NJ -- PA 
-    NM -- OK 
-    NM -- TX 
     NM -- UT [color=red style=dashed]
-    NV -- OR 
-    NV -- UT 
-    NY -- PA 
-    NY -- VT 
-    OH -- PA 
-    OH -- WV 
-    OK -- TX 
-    OR -- WA 
-    PA -- WV 
-    SD -- WY 
-    TN -- VA 
-    UT -- WY 
-    VA -- WV 
+
 }

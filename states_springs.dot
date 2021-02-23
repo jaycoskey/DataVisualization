@@ -3,7 +3,7 @@ strict graph States {
     splines=line
     node [fixedsize=true fontsize=10 height=0.45 width=0.45]
 
-    AK [pos="-119.42,31.97" style=filled fillcolor=lightgray]
+    AK [pos="-119.00,31.00" style=filled fillcolor=lightgray]
     AL [pos="-86.90,32.32"]
     AR [pos="-91.83,35.20"]
     AZ [pos="-111.09,34.05"]
@@ -13,7 +13,7 @@ strict graph States {
     DE [pos="-75.53,38.91"]
     FL [pos="-81.52,27.66"]
     GA [pos="-82.91,32.16"]
-    HI [pos="-105.03,31.97" style=filled fillcolor=lightgray]
+    HI [pos="-111.00,31.00" style=filled fillcolor=lightgray]
     IA [pos="-93.10,41.88"]
     ID [pos="-114.74,44.07"]
     IL [pos="-89.40,40.63"]
@@ -54,117 +54,117 @@ strict graph States {
     WV [pos="-80.45,38.60"]
     WY [pos="-107.29,43.08"]
 
+    AL -- FL
+    AL -- GA
+    AL -- MS
+    AL -- TN
+    AR -- LA
+    AR -- MO
+    AR -- MS
+    AR -- OK
+    AR -- TN
+    AR -- TX
+    AZ -- CA
+    AZ -- NM
+    AZ -- NV
+    AZ -- UT
+    CA -- NV
+    CA -- OR
+    CO -- KS
+    CO -- NE
+    CO -- NM
+    CO -- OK
+    CO -- UT
+    CO -- WY
+    CT -- MA
+    CT -- NY
+    CT -- RI
+    DE -- MD
+    DE -- NJ
+    DE -- PA
+    FL -- GA
+    GA -- NC
+    GA -- SC
+    GA -- TN
+    IA -- IL
+    IA -- MN
+    IA -- MO
+    IA -- NE
+    IA -- SD
+    IA -- WI
+    ID -- MT
+    ID -- NV
+    ID -- OR
+    ID -- UT
+    ID -- WA
+    ID -- WY
+    IL -- IN
+    IL -- KY
+    IL -- MO
+    IL -- WI
+    IN -- KY
+    IN -- MI
+    IN -- OH
+    KS -- MO
+    KS -- NE
+    KS -- OK
+    KY -- MO
+    KY -- OH
+    KY -- TN
+    KY -- VA
+    KY -- WV
+    LA -- MS
+    LA -- TX
+    MA -- NH
+    MA -- NY
+    MA -- RI
+    MA -- VT
+    MD -- PA
+    MD -- VA
+    MD -- WV
+    ME -- NH
+    MI -- OH
+    MI -- WI
+    MN -- ND
+    MN -- SD
+    MN -- WI
+    MO -- NE
+    MO -- OK
+    MO -- TN
+    MS -- TN
+    MT -- ND
+    MT -- SD
+    MT -- WY
+    NC -- SC
+    NC -- TN
+    NC -- VA
+    ND -- SD
+    NE -- SD
+    NE -- WY
+    NH -- VT
+    NJ -- NY
+    NJ -- PA
+    NM -- OK
+    NM -- TX
+    NV -- OR
+    NV -- UT
+    NY -- PA
+    NY -- VT
+    OH -- PA
+    OH -- WV
+    OK -- TX
+    OR -- WA
+    PA -- WV
+    SD -- WY
+    TN -- VA
+    UT -- WY
+    VA -- WV
+    AZ -- CO [color=red style=dashed]
+    NM -- UT [color=red style=dashed]
+
     AK -- HI [style=invis]
     AK -- CA [style=invis]
     HI -- TX [style=invis]
     NJ -- CT [style=invis]
     NJ -- MD [style=invis]
-
-    AL -- FL 
-    AL -- GA 
-    AL -- MS 
-    AL -- TN 
-    AR -- LA 
-    AR -- MO 
-    AR -- MS 
-    AR -- OK 
-    AR -- TN 
-    AR -- TX 
-    AZ -- CA 
-    AZ -- CO [color=red style=dashed]
-    AZ -- NM 
-    AZ -- NV 
-    AZ -- UT 
-    CA -- NV 
-    CA -- OR 
-    CO -- KS 
-    CO -- NE 
-    CO -- NM 
-    CO -- OK 
-    CO -- UT 
-    CO -- WY 
-    CT -- MA 
-    CT -- NY 
-    CT -- RI 
-    DE -- MD 
-    DE -- NJ 
-    DE -- PA 
-    FL -- GA 
-    GA -- NC 
-    GA -- SC 
-    GA -- TN 
-    IA -- IL 
-    IA -- MN 
-    IA -- MO 
-    IA -- NE 
-    IA -- SD 
-    IA -- WI 
-    ID -- MT 
-    ID -- NV 
-    ID -- OR 
-    ID -- UT 
-    ID -- WA 
-    ID -- WY 
-    IL -- IN 
-    IL -- KY 
-    IL -- MO 
-    IL -- WI 
-    IN -- KY 
-    IN -- MI 
-    IN -- OH 
-    KS -- MO 
-    KS -- NE 
-    KS -- OK 
-    KY -- MO 
-    KY -- OH 
-    KY -- TN 
-    KY -- VA 
-    KY -- WV 
-    LA -- MS 
-    LA -- TX 
-    MA -- NH 
-    MA -- NY 
-    MA -- RI 
-    MA -- VT 
-    MD -- PA 
-    MD -- VA 
-    MD -- WV 
-    ME -- NH 
-    MI -- OH 
-    MI -- WI 
-    MN -- ND 
-    MN -- SD 
-    MN -- WI 
-    MO -- NE 
-    MO -- OK 
-    MO -- TN 
-    MS -- TN 
-    MT -- ND 
-    MT -- SD 
-    MT -- WY 
-    NC -- SC 
-    NC -- TN 
-    NC -- VA 
-    ND -- SD 
-    NE -- SD 
-    NE -- WY 
-    NH -- VT 
-    NJ -- NY 
-    NJ -- PA 
-    NM -- OK 
-    NM -- TX 
-    NM -- UT [color=red style=dashed]
-    NV -- OR 
-    NV -- UT 
-    NY -- PA 
-    NY -- VT 
-    OH -- PA 
-    OH -- WV 
-    OK -- TX 
-    OR -- WA 
-    PA -- WV 
-    SD -- WY 
-    TN -- VA 
-    UT -- WY 
-    VA -- WV 
 }
