@@ -16,6 +16,9 @@ springs:
 	make write_springs
 	make view_springs
 
+test:
+	./states_viz.py --test
+       
 clean:
 	rm *.dot *.png
 
