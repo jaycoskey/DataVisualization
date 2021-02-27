@@ -2,6 +2,7 @@ strict graph States {
     rankdir=LR
     splines=line
     node [fixedsize=true fontsize=10 height=0.45 width=0.45]
+    penwidth=5
 
     AK [pos="-119.00,31.00" style=filled fillcolor=lightgray]
     AL [pos="-86.90,32.32"]
@@ -159,6 +160,7 @@ strict graph States {
     TN -- VA
     UT -- WY
     VA -- WV
+
     AZ -- CO [color=red style=dashed]
     NM -- UT [color=red style=dashed]
 
