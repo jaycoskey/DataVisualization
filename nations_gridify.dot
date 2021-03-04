@@ -232,16 +232,17 @@ strict graph States {
     AR -- CL
     AR -- PY
     AR -- UY
+    AT -- CH
     AT -- CZ
     AT -- DE
     AT -- HU
     AT -- IT
+    AT -- LI
     AT -- SI
     AT -- SK
     AZ -- GE
     AZ -- IR
     AZ -- RU
-    AZ -- TR
     BA -- HR
     BA -- ME
     BA -- RS
@@ -258,6 +259,7 @@ strict graph States {
     BF -- NE
     BF -- TG
     BG -- GR
+    BG -- MK
     BG -- RO
     BG -- RS
     BI -- CD
@@ -369,9 +371,11 @@ strict graph States {
     ET -- SD
     ET -- SO
     ET -- SS
+    FI -- NO
     FI -- SE
     FR -- IT
     FR -- LU
+    FR -- MC
     GA -- GQ
     GE -- RU
     GE -- TR
@@ -382,6 +386,7 @@ strict graph States {
     GN -- ML
     GN -- SL
     GN -- SN
+    GR -- MK
     GT -- HN
     GT -- MX
     GT -- SV
@@ -391,11 +396,13 @@ strict graph States {
     HN -- NI
     HN -- SV
     HR -- HU
+    HR -- ME
     HR -- RS
     HR -- SI
     HU -- RO
     HU -- SI
     HU -- SK
+    HU -- UA
     ID -- MY
     ID -- PG
     ID -- TL
@@ -418,6 +425,8 @@ strict graph States {
     IR -- TM
     IR -- TR
     IT -- SI
+    IT -- SM
+    IT -- VA
     JO -- PS
     JO -- SA
     JO -- SY
@@ -449,6 +458,7 @@ strict graph States {
     LY -- SD
     LY -- TD
     LY -- TN
+    ES -- MA
     MD -- RO
     MD -- UA
     ME -- RS
@@ -480,19 +490,32 @@ strict graph States {
     OM -- SA
     OM -- YE
     PL -- SK
+    PL -- UA
     QA -- SA
     RO -- RS
+    RO -- UA
+    RS -- XK
+    BY -- RU
+    EE -- RU
+    FI -- RU
+    LT -- RU
+    LV -- RU
+    NO -- RU
+    PL -- RU
     RU -- UA
     RW -- TZ
     RW -- UG
     SA -- YE
     SD -- SS
     SD -- TD
+    SK -- UA
     SS -- UG
     SY -- TR
     SZ -- ZA
     TJ -- UZ
     TM -- UZ
+    BG -- TR
+    GR -- TR
     TZ -- UG
     TZ -- ZM
     ZA -- ZW

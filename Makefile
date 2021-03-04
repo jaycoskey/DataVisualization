@@ -63,7 +63,7 @@ write_nations_gridify:
 	neato -n2 -Tpng -o nations_gridify.png nations_gridify.dot
 
 write_nations_planned:
-	./states_viz.py --planned --nations --coords_file nations.latlong --dotfile=nations_planned.dot
+	./states_viz.py --planned --nations --coords_file nations_v1.coords --dotfile=nations_planned.dot
 	neato -n2 -Tpng -o nations_planned.png nations_planned.dot
 
 write_states_gridify:
