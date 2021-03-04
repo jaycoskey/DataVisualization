@@ -131,22 +131,31 @@ def maybe_dict_get(d, key, default):
     else:
         return default
 
-def read_graph(nodes_file, edges_file, order='xy', has_groups=False, verbose=False):
+def read_graph(nodes_file, edges_file, verbose=True):
+
     def read_nodes(nodes_file):
         with open(nodes_file, 'r') as f:
+            has_groups = None
+            is_coords_file = nodes_file.endswith('coords')
+            coords_order = 'xy' if is_coords_file else 'yx'
             for line in f.readlines():
                 items = line.strip().split('#')[0].split()
                 if len(items) == 0:
                     continue
+                if has_groups is None:
+                    has_groups = False if len(items[0]) == 2 else True
                 if has_groups:
                     assert(len(items) >= 4)
                     _, name, x, y = items[0:4]  # TODO: Support block display of groups (e.g., continents).
                 else:
                     assert(len(items) == 3)
                     name, x, y = items
-                if order == 'yx':  # TODO: Swap based on whether reading lat/long or coords file.
+                if coords_order == 'yx':
                     x, y = y, x
-                yield (name, float(x), float(y))
+                if is_coords_file:
+                    yield (name, int(x), int(y))
+                else:
+                    yield (name, float(x), float(y))
 
     def read_edges(edges_file):
         with open(edges_file, 'r') as f:
@@ -168,7 +177,7 @@ def read_graph(nodes_file, edges_file, order='xy', has_groups=False, verbose=Fal
     verbose and print(f'Reading from edges file: "{edges_file}"')
     for node, nbrs in read_edges(edges_file):
         for nbr in nbrs:
-            if nbr > node:
+            if node < nbr:
                 result.add_edge(node, nbr)
 
     return result
@@ -246,6 +255,7 @@ def write_dotfile_gridify( g
                          , custom_visible_edges=[]
                          , custom_visible_edge_attrs=''
                          , custom_invisible_edges=[]
+                         , is_input_ordinal=False
                          , do_allow_invalid_intersections=False
                          , settings=None
                          , verbose=False):
@@ -316,7 +326,7 @@ def write_dotfile_gridify( g
                        for yord in range(max(yords))
                      }
 
-        # TODO: Consider prioritizing squishing coords around large gaps in pre-ordinalified locations (e.g., Atlantic/Pacific oceans)
+        # TODO: Consider prioritizing compressing graph at large gaps in pre-ordinalified locations (e.g., oceans)
         pgaps = deepcopy(xord_pgaps)
         pgaps.update(yord_pgaps)
         pgaps = sorted(pgaps.items(), key=lambda item: item[1])
@@ -324,14 +334,23 @@ def write_dotfile_gridify( g
         assert_states_ords(s2xord, s2yord, xord2ss, yord2ss)
         return s2xord, s2yord, xord2ss, yord2ss, pgaps
 
-    def gridify(g, max_iter_count=MAX_ITER_COUNT, do_allow_invalid_intersections=False, verbose=False):
+    def gridify( g
+               , max_iter_count=MAX_ITER_COUNT
+               , is_input_ordinal=False
+               , do_allow_invalid_intersections=False
+               , verbose=False
+               ):
         do_print_initial_invalid_intersections = False
         s2xy = {s:xy for s,xy in g.nodes(data=True)}
 
         s2x = lambda s: s2xy[s]['x']
         s2y = lambda s: s2xy[s]['y']
 
-        gord = get_gord(g, s2xy)
+        if is_input_ordinal: 
+            gord = deepcopy(g)
+        else:
+            gord = get_gord(g, s2xy)
+
         if do_print_initial_invalid_intersections:  # TODO: Control via args/config
             initial_invalid_intersections = get_invalid_intersections(gord)
             print('Initial invalid intersections:')
@@ -379,8 +398,8 @@ def write_dotfile_gridify( g
                 verbose and print(f'{prefix}: Post-squish: sig(gcand)={signature(gcand, True)}')
 
                 is_cand_valid_nodes = is_valid_distinct_nodes(gcand)
-                is_cand_valid_edges = (  do_allow_invalid_intersections
-                                      or is_valid_intersections(gcand)
+                is_cand_valid_edges = ( do_allow_invalid_intersections
+                                        or is_valid_intersections(gcand)
                                       )
                 is_cand_valid = is_cand_valid_nodes and is_cand_valid_edges
                 if is_cand_valid:
@@ -394,7 +413,8 @@ def write_dotfile_gridify( g
                         if is_cand_valid_edges:
                             print(f'\tINFO: gridify: Graph not updated: Candidate edges invalid')
             else:
-                verbose and print(f'INFO: (iter,cand)=({iter_count},{cand_count}): Exhausted all candidates. Exiting iteration loop.')
+                msg = 'Exhausted all candidates. Exiting iteration loop.'
+                verbose and print(f'INFO: (iter,cand)=({iter_count},{cand_count}): {msg}')
                 break  # Did not act on any candidates. Do not proceed to next iteration.
 
         verbose and print(f'# ========================================')
@@ -440,6 +460,7 @@ def write_dotfile_gridify( g
 
     gridified = gridify( g
                        , max_iter_count=MAX_ITER_COUNT
+                       , is_input_ordinal=is_input_ordinal
                        , do_allow_invalid_intersections=do_allow_invalid_intersections
                        , verbose=verbose)
 
@@ -486,8 +507,10 @@ def write_dotfile_planned( g
 
     def write_edges(f):
         for a, b in sorted(g.edges(data=False)):
-            if b > a:
+            if a < b:
                 writeln(f, 1, f'{a} -- {b}')
+            else:
+                writeln(f, 1, f'{b} -- {a}')
         writeln(f)
         if has_items(custom_visible_edges):
             writeln(f)
@@ -646,37 +669,42 @@ class TestGeomInvalidIntersection(unittest.TestCase):
 
 # ----------------------------------------
 
-def make_dotfile_nations_gridify(dotfile=DEFAULT_DOTFILE_NATIONS_GRIDIFY):
-    g = read_graph( nodes_file=INFILE_LATLONG_NATIONS
+def make_dotfile_nations_gridify(nodes_file=INFILE_LATLONG_NATIONS, dotfile=DEFAULT_DOTFILE_NATIONS_GRIDIFY):
+    nodes_file = nodes_file if nodes_file else INFILE_LATLONG_NATIONS
+    dotfile = dotfile if dotfile else DEFAULT_DOTFILE_NATIONS_GRIDIFY
+
+    g = read_graph( nodes_file=nodes_file
                   , edges_file=INFILE_EDGES_NATIONS
-                  , order='yx'
-                  , has_groups=True
                   )
     write_dotfile_gridify( g
                          , dotfile=dotfile
                          , custom_visible_edges=None
                          , custom_visible_edge_attrs=None
                          , custom_invisible_edges=None
+                         , is_input_ordinal=nodes_file.endswith('coords')
                          , do_allow_invalid_intersections=True
                          , settings={"scale_factor":40, "fontsize":10, "height":0.35, "width":0.35}
                          , verbose=True
                          )
 
-def make_dotfile_nations_planned(latlong_file=INFILE_LATLONG_NATIONS, dotfile=DEFAULT_DOTFILE_NATIONS_PLANNED):
-    g = read_graph( nodes_file=INFILE_LATLONG_NATIONS
+def make_dotfile_nations_planned(nodes_file=INFILE_LATLONG_NATIONS, dotfile=DEFAULT_DOTFILE_NATIONS_PLANNED):
+    nodes_file = nodes_file if nodes_file else INFILE_LATLONG_NATIONS
+    dotfile = dotfile if dotfile else DEFAULT_DOTFILE_NATIONS_PLANNED
+
+    g = read_graph( nodes_file=nodes_file
                   , edges_file=INFILE_EDGES_NATIONS
-                  , order='yx'
-                  , has_groups=True
                   )
     write_dotfile_planned( g
                          , dotfile=dotfile
-                         , settings={"scale_factor":40, "fontsize":60, "height":2, "width":2}
+                         , settings={"scale_factor":40, "fontsize":10, "height":0.4, "width":0.4}
                          )
 
-def make_dotfile_states_gridify(dotfile=DEFAULT_DOTFILE_STATES_GRIDIFY):
-    g = read_graph( nodes_file=INFILE_LATLONG_STATES
+def make_dotfile_states_gridify(nodes_file=INFILE_LATLONG_STATES, dotfile=DEFAULT_DOTFILE_STATES_GRIDIFY):
+    nodes_file = nodes_file if nodes_file else INFILE_LATLONG_STATES
+    dotfile = dotfile if dotfile else DEFAULT_DOTFILE_STATES_GRIDIFY
+
+    g = read_graph( nodes_file=nodes_file
                   , edges_file=INFILE_EDGES_STATES
-                  , order='yx'
                   )
     # Prevent the ordinalified ME-NH connection from crossing the MA-VT one.
     reposition_nodes(g, STATES_SPRINGS_REPOSITIONS + STATES_GRIDIFY_REPOSITIONS)
@@ -686,17 +714,21 @@ def make_dotfile_states_gridify(dotfile=DEFAULT_DOTFILE_STATES_GRIDIFY):
                          , custom_visible_edges=STATES_FOUR_CORNERS_EDGES
                          , custom_visible_edge_attrs='color=red style=dashed'
                          , custom_invisible_edges=None
+                         , is_input_ordinal=nodes_file.endswith('coords')
                          , do_allow_invalid_intersections=False
                          , settings=None # {"scale_factor":40, "fontsize":10, "height":1.5, "width":1.5}
                          , verbose=True
                          )
 
-def make_dotfile_states_planned( coords_file=DEFAULT_COORDS_STATES_V3
+def make_dotfile_states_planned( nodes_file=DEFAULT_COORDS_STATES_V3
                                , dotfile=DEFAULT_DOTFILE_STATES_PLANNED
                                ):
-    print(f'Using coords file:     "{coords_file}"')
+    nodes_file = nodes_file if nodes_file else DEFAULT_COORDS_STATES_V3
+    dotfile = dotfile if dotfile else DEFAULT_DOTFILE_STATES_PLANNED
+
+    print(f'Using coords file:     "{nodes_file}"')
     print(f'Will write to dotfile: "{dotfile}"')
-    g = read_graph( nodes_file=coords_file if coords_file else DEFAULT_COORDS_STATES_V3
+    g = read_graph( nodes_file=nodes_file
                   , edges_file=INFILE_EDGES_STATES
                   )
     reposition_nodes(g, STATES_SPRINGS_REPOSITIONS)
@@ -708,10 +740,12 @@ def make_dotfile_states_planned( coords_file=DEFAULT_COORDS_STATES_V3
                          , settings={"height":0.35, "width":0.35}
                          )
 
-def make_dotfile_states_springs(dotfile=DEFAULT_DOTFILE_STATES_SPRINGS):
-    g = read_graph( nodes_file=INFILE_LATLONG_STATES
+def make_dotfile_states_springs(nodes_file=INFILE_LATLONG_STATES, dotfile=DEFAULT_DOTFILE_STATES_SPRINGS):
+    nodes_file = nodes_file if nodes_file else INFILE_LATLONG_STATES
+    dotfile = dotfile if dotfile else DEFAULT_DOTFILE_STATES_SPRINGS
+
+    g = read_graph( nodes_file=nodes_file
                   , edges_file=INFILE_EDGES_STATES
-                  , order='yx'
                   )
     reposition_nodes(g, STATES_SPRINGS_REPOSITIONS)
     assert_states_graph_sanity(g)
@@ -727,8 +761,8 @@ if __name__ == '__main__':
     prog='states_viz'
     description='Visualize diagrammatic layout of nations or US states using different layouts.'
     parser = argparse.ArgumentParser(prog=prog , description=description)
-    parser.add_argument('-c', '--coords_file', action='store',      help='Specify input coordinates file (x,y or lat,long)')
-    parser.add_argument('-d', '--dotfile',     action='store',      help='Specify output dotfile')
+    parser.add_argument('-c', '--coords_file', action='store', help='Specify input coordinates file (x,y or lat,long)')
+    parser.add_argument('-d', '--dotfile',     action='store', help='Specify output dotfile')
 
     parser.add_argument('-n', '--nations',     action='store_true', help='Visualizing nations rather than US states')
 
@@ -748,13 +782,13 @@ if __name__ == '__main__':
         sys.exit(1)
     if args.gridify:
         if args.nations:
-            make_dotfile_nations_gridify(dotfile=args.dotfile)
+            make_dotfile_nations_gridify(nodes_file=args.coords_file, dotfile=args.dotfile)
         else:
-            make_dotfile_states_gridify(dotfile=args.dotfile)
+            make_dotfile_states_gridify(nodes_file=args.coords_file, dotfile=args.dotfile)
     if args.planned:
         if args.nations:
-            make_dotfile_nations_planned(latlong_file=args.coords_file, dotfile=args.dotfile)
+            make_dotfile_nations_planned(nodes_file=args.coords_file, dotfile=args.dotfile)
         else:
-            make_dotfile_states_planned(coords_file=args.coords_file, dotfile=args.dotfile)
+            make_dotfile_states_planned(nodes_file=args.coords_file, dotfile=args.dotfile)
     if args.springs:
         make_dotfile_states_springs(dotfile=args.dotfile)
