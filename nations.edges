@@ -1,6 +1,6 @@
 AD [Andorra]: ES FR
 AE [United Arab Emirates]: OM SA
-AF [Afghanistan]: CN IR PK TJ TM UZ  # ??? IN
+AF [Afghanistan]: CN IR PK TJ TM UZ  # IN
 AG [Antigua and Barbuda]:
 AL [Albania]: GR ME MK XK
 AM [Armenia]: AZ GE IR TR
@@ -8,7 +8,7 @@ AO [Angola]: CD (CD) CG NA ZM
 AR [Argentina]: BO BR CL PY UY
 AT [Austria]: CH CZ DE HU IT LI SI SK
 AU [Australia]:
-AZ [Azerbaijan]: AM GE IR RU TR
+AZ [Azerbaijan]: AM GE IR RU  # TR: Remove to preserve planarity
 BA [Bosnia and Herzegovina]: HR ME RS
 BB [Barbados]:
 BD [Bangladesh]: IN MM
@@ -34,7 +34,7 @@ CH [Switzerland]: AT DE FR IT LI
 CI [Côte d'Ivoire]: BF GH GN LR ML
 CL [Chile]: AR BO PE
 CM [Cameroon]: CF CG GA GQ NG TD
-CN [China]: AF BT IN KG KP KZ LA MM MN NP RU TJ VN  # ??? PK
+CN [China]: AF BT IN KG KP KZ LA MM MN NP RU TJ VN  # PK
 CO [Colombia]: BR EC PA PE VE
 CR [Costa Rica]: NI PA
 CU [Cuba]:
@@ -173,7 +173,7 @@ TL [Timor-Leste]: ID
 TM [Turkmenistan]: AF IR KZ UZ
 TN [Tunisia]: DZ LY
 TO [Tonga]:
-TR [Turkey]: AM AZ BG GE GR IQ IR SY
+TR [Turkey]: AM BG GE GR IQ IR SY  # AZ: Remove to preserve planarity
 TT [Trinidad and Tobago]:
 TV [Tuvalu]:
 TZ [Tanzania]: BI CD KE MW MZ RW UG ZM
