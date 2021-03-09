@@ -3,521 +3,521 @@ strict graph States {
     overlap=false
     penwidth=7
 
-    AD [pos="680.0,1440.0"]
-    AE [pos="1160.0,1000.0"]
-    AF [pos="1200.0,1280.0"]
-    AG [pos="320.0,960.0"]
-    AL [pos="800.0,1400.0"]
-    AM [pos="1040.0,1400.0"]
-    AO [pos="840.0,440.0"]
-    AR [pos="280.0,40.0"]
-    AT [pos="800.0,1560.0"]
-    AU [pos="1560.0,200.0"]
-    AZ [pos="1080.0,1360.0"]
-    BA [pos="880.0,1480.0"]
-    BB [pos="360.0,840.0"]
-    BD [pos="1320.0,1040.0"]
-    BE [pos="720.0,1640.0"]
-    BF [pos="640.0,800.0"]
-    BG [pos="960.0,1440.0"]
-    BH [pos="1120.0,1080.0"]
-    BI [pos="960.0,560.0"]
-    BJ [pos="680.0,760.0"]
-    BN [pos="1440.0,680.0"]
-    BO [pos="280.0,360.0"]
-    BR [pos="400.0,400.0"]
-    BS [pos="160.0,1040.0"]
-    BT [pos="1320.0,1160.0"]
-    BW [pos="880.0,240.0"]
-    BY [pos="960.0,1680.0"]
-    BZ [pos="80.0,960.0"]
-    CA [pos="40.0,1760.0"]
-    CD [pos="880.0,560.0"]
-    CF [pos="880.0,720.0"]
-    CG [pos="840.0,600.0"]
-    CH [pos="720.0,1560.0"]
-    CI [pos="600.0,720.0"]
-    CL [pos="200.0,80.0"]
-    CM [pos="760.0,720.0"]
-    CN [pos="1400.0,1320.0"]
-    CO [pos="200.0,680.0"]
-    CR [pos="120.0,760.0"]
-    CU [pos="160.0,1000.0"]
-    CV [pos="440.0,920.0"]
-    CY [pos="1000.0,1320.0"]
-    CZ [pos="800.0,1640.0"]
-    DE [pos="760.0,1640.0"]
-    DJ [pos="1080.0,800.0"]
-    DK [pos="760.0,1720.0"]
-    DM [pos="320.0,920.0"]
-    DO [pos="240.0,960.0"]
-    DZ [pos="680.0,1120.0"]
-    EC [pos="160.0,600.0"]
-    EE [pos="960.0,1720.0"]
-    EG [pos="960.0,1080.0"]
-    EH [pos="520.0,1040.0"]
-    ER [pos="1040.0,920.0"]
-    ES [pos="600.0,1360.0"]
-    ET [pos="1040.0,760.0"]
-    FI [pos="920.0,1760.0"]
-    FJ [pos="1680.0,360.0"]
-    FM [pos="1600.0,720.0"]
-    FR [pos="680.0,1520.0"]
-    GA [pos="800.0,600.0"]
-    GD [pos="320.0,800.0"]
-    GE [pos="1040.0,1440.0"]
-    GH [pos="640.0,720.0"]
-    GM [pos="480.0,840.0"]
-    GN [pos="560.0,760.0"]
-    GQ [pos="760.0,640.0"]
-    GR [pos="920.0,1360.0"]
-    GT [pos="80.0,920.0"]
-    GW [pos="520.0,800.0"]
-    GY [pos="360.0,680.0"]
-    HN [pos="120.0,920.0"]
-    HR [pos="880.0,1520.0"]
-    HT [pos="200.0,960.0"]
-    HU [pos="880.0,1560.0"]
-    ID [pos="1440.0,600.0"]
-    IE [pos="560.0,1680.0"]
-    IL [pos="1000.0,1240.0"]
-    IN [pos="1280.0,1000.0"]
-    IQ [pos="1080.0,1240.0"]
-    IR [pos="1120.0,1240.0"]
-    IS [pos="440.0,1800.0"]
-    IT [pos="760.0,1400.0"]
-    JM [pos="160.0,960.0"]
-    JO [pos="1040.0,1200.0"]
-    JP [pos="1560.0,1320.0"]
-    KE [pos="1040.0,600.0"]
-    KG [pos="1240.0,1400.0"]
-    KH [pos="1440.0,800.0"]
-    KI [pos="0.0,560.0"]
-    KM [pos="1040.0,440.0"]
-    KN [pos="280.0,960.0"]
-    KP [pos="1520.0,1360.0"]
-    KR [pos="1520.0,1320.0"]
-    KW [pos="1120.0,1160.0"]
-    KZ [pos="1240.0,1560.0"]
-    LA [pos="1400.0,1000.0"]
-    LB [pos="1000.0,1280.0"]
-    LC [pos="320.0,880.0"]
-    LI [pos="760.0,1600.0"]
-    LK [pos="1280.0,720.0"]
-    LR [pos="560.0,720.0"]
-    LS [pos="960.0,160.0"]
-    LT [pos="880.0,1720.0"]
-    LU [pos="720.0,1600.0"]
-    LV [pos="920.0,1720.0"]
-    LY [pos="840.0,1080.0"]
-    MA [pos="560.0,1240.0"]
-    MC [pos="720.0,1440.0"]
-    MD [pos="920.0,1560.0"]
-    ME [pos="840.0,1440.0"]
-    MG [pos="1080.0,320.0"]
-    MK [pos="920.0,1400.0"]
-    ML [pos="600.0,960.0"]
-    MM [pos="1360.0,1000.0"]
-    MN [pos="1360.0,1560.0"]
-    MR [pos="520.0,1000.0"]
-    MT [pos="760.0,1320.0"]
-    MU [pos="1160.0,280.0"]
-    MV [pos="1240.0,680.0"]
-    MW [pos="960.0,400.0"]
-    MX [pos="40.0,1040.0"]
-    MY [pos="1400.0,680.0"]
-    MZ [pos="1000.0,320.0"]
-    NA [pos="840.0,240.0"]
-    NE [pos="720.0,960.0"]
-    NG [pos="720.0,760.0"]
-    NI [pos="120.0,840.0"]
-    NL [pos="720.0,1680.0"]
-    NO [pos="720.0,1800.0"]
-    NP [pos="1280.0,1120.0"]
-    NR [pos="1640.0,600.0"]
-    NU [pos="0.0,320.0"]
-    NZ [pos="1680.0,0.0"]
-    OM [pos="1160.0,960.0"]
-    PA [pos="160.0,720.0"]
-    PE [pos="200.0,480.0"]
-    PG [pos="1560.0,520.0"]
-    PH [pos="1480.0,840.0"]
-    PK [pos="1240.0,1160.0"]
-    PL [pos="840.0,1720.0"]
-    PS [pos="1000.0,1200.0"]
-    PT [pos="560.0,1360.0"]
-    PW [pos="1560.0,720.0"]
-    PY [pos="320.0,280.0"]
-    QA [pos="1120.0,1040.0"]
-    RE [pos="1120.0,280.0"]
-    RO [pos="960.0,1520.0"]
-    RS [pos="920.0,1480.0"]
-    RU [pos="1360.0,1800.0"]
-    RW [pos="960.0,600.0"]
-    SA [pos="1080.0,1040.0"]
-    SB [pos="1640.0,480.0"]
-    SC [pos="1120.0,560.0"]
-    SD [pos="960.0,840.0"]
-    SE [pos="840.0,1760.0"]
-    SG [pos="1400.0,640.0"]
-    SI [pos="840.0,1520.0"]
-    SK [pos="840.0,1600.0"]
-    SL [pos="520.0,720.0"]
-    SM [pos="720.0,1400.0"]
-    SN [pos="520.0,880.0"]
-    SO [pos="1080.0,680.0"]
-    SR [pos="400.0,680.0"]
-    SS [pos="960.0,720.0"]
-    ST [pos="720.0,600.0"]
-    SV [pos="80.0,880.0"]
-    SY [pos="1040.0,1280.0"]
-    SZ [pos="960.0,200.0"]
-    TD [pos="840.0,920.0"]
-    TG [pos="680.0,720.0"]
-    TH [pos="1360.0,920.0"]
-    TJ [pos="1240.0,1360.0"]
-    TL [pos="1520.0,480.0"]
-    TM [pos="1160.0,1360.0"]
-    TN [pos="760.0,1280.0"]
-    TO [pos="0.0,280.0"]
-    TR [pos="1000.0,1360.0"]
-    TT [pos="320.0,760.0"]
-    TV [pos="1680.0,520.0"]
-    TW [pos="1480.0,1040.0"]
-    TZ [pos="1000.0,520.0"]
-    UA [pos="960.0,1600.0"]
-    UG [pos="960.0,640.0"]
-    UK [pos="680.0,1720.0"]
-    US [pos="40.0,1320.0"]
-    UY [pos="400.0,120.0"]
-    UZ [pos="1200.0,1400.0"]
-    VA [pos="760.0,1360.0"]
-    VC [pos="320.0,840.0"]
-    VE [pos="280.0,720.0"]
-    VN [pos="1440.0,880.0"]
-    VU [pos="1640.0,360.0"]
-    WS [pos="0.0,400.0"]
-    XK [pos="880.0,1440.0"]
-    YE [pos="1120.0,920.0"]
-    YT [pos="1040.0,400.0"]
-    ZA [pos="920.0,160.0"]
-    ZM [pos="920.0,400.0"]
-    ZW [pos="920.0,320.0"]
+    AD [pos="850.0,1800.0"]
+    AE [pos="1450.0,1250.0"]
+    AF [pos="1500.0,1600.0"]
+    AG [pos="400.0,1200.0"]
+    AL [pos="1000.0,1750.0"]
+    AM [pos="1300.0,1750.0"]
+    AO [pos="1050.0,550.0"]
+    AR [pos="350.0,50.0"]
+    AT [pos="1000.0,1950.0"]
+    AU [pos="1950.0,250.0"]
+    AZ [pos="1350.0,1700.0"]
+    BA [pos="1100.0,1850.0"]
+    BB [pos="450.0,1050.0"]
+    BD [pos="1650.0,1300.0"]
+    BE [pos="900.0,2050.0"]
+    BF [pos="800.0,1000.0"]
+    BG [pos="1200.0,1800.0"]
+    BH [pos="1400.0,1350.0"]
+    BI [pos="1200.0,700.0"]
+    BJ [pos="850.0,950.0"]
+    BN [pos="1800.0,850.0"]
+    BO [pos="350.0,450.0"]
+    BR [pos="500.0,500.0"]
+    BS [pos="200.0,1300.0"]
+    BT [pos="1650.0,1450.0"]
+    BW [pos="1100.0,300.0"]
+    BY [pos="1200.0,2100.0"]
+    BZ [pos="100.0,1200.0"]
+    CA [pos="50.0,2200.0"]
+    CD [pos="1100.0,700.0"]
+    CF [pos="1100.0,900.0"]
+    CG [pos="1050.0,750.0"]
+    CH [pos="900.0,1950.0"]
+    CI [pos="750.0,900.0"]
+    CL [pos="250.0,100.0"]
+    CM [pos="950.0,900.0"]
+    CN [pos="1750.0,1650.0"]
+    CO [pos="250.0,850.0"]
+    CR [pos="150.0,950.0"]
+    CU [pos="200.0,1250.0"]
+    CV [pos="550.0,1150.0"]
+    CY [pos="1250.0,1650.0"]
+    CZ [pos="1000.0,2050.0"]
+    DE [pos="950.0,2050.0"]
+    DJ [pos="1350.0,1000.0"]
+    DK [pos="950.0,2150.0"]
+    DM [pos="400.0,1150.0"]
+    DO [pos="300.0,1200.0"]
+    DZ [pos="850.0,1400.0"]
+    EC [pos="200.0,750.0"]
+    EE [pos="1200.0,2150.0"]
+    EG [pos="1200.0,1350.0"]
+    EH [pos="650.0,1300.0"]
+    ER [pos="1300.0,1150.0"]
+    ES [pos="750.0,1700.0"]
+    ET [pos="1300.0,950.0"]
+    FI [pos="1150.0,2200.0"]
+    FJ [pos="2100.0,450.0"]
+    FM [pos="2000.0,900.0"]
+    FR [pos="850.0,1900.0"]
+    GA [pos="1000.0,750.0"]
+    GD [pos="400.0,1000.0"]
+    GE [pos="1300.0,1800.0"]
+    GH [pos="800.0,900.0"]
+    GM [pos="600.0,1050.0"]
+    GN [pos="700.0,950.0"]
+    GQ [pos="950.0,800.0"]
+    GR [pos="1150.0,1700.0"]
+    GT [pos="100.0,1150.0"]
+    GW [pos="650.0,1000.0"]
+    GY [pos="450.0,850.0"]
+    HN [pos="150.0,1150.0"]
+    HR [pos="1100.0,1900.0"]
+    HT [pos="250.0,1200.0"]
+    HU [pos="1100.0,1950.0"]
+    ID [pos="1800.0,750.0"]
+    IE [pos="700.0,2100.0"]
+    IL [pos="1250.0,1550.0"]
+    IN [pos="1600.0,1250.0"]
+    IQ [pos="1350.0,1550.0"]
+    IR [pos="1400.0,1550.0"]
+    IS [pos="550.0,2250.0"]
+    IT [pos="950.0,1750.0"]
+    JM [pos="200.0,1200.0"]
+    JO [pos="1300.0,1500.0"]
+    JP [pos="1950.0,1650.0"]
+    KE [pos="1300.0,750.0"]
+    KG [pos="1550.0,1750.0"]
+    KH [pos="1800.0,1000.0"]
+    KI [pos="0.0,700.0"]
+    KM [pos="1300.0,550.0"]
+    KN [pos="350.0,1200.0"]
+    KP [pos="1900.0,1700.0"]
+    KR [pos="1900.0,1650.0"]
+    KW [pos="1400.0,1450.0"]
+    KZ [pos="1550.0,1950.0"]
+    LA [pos="1750.0,1250.0"]
+    LB [pos="1250.0,1600.0"]
+    LC [pos="400.0,1100.0"]
+    LI [pos="950.0,2000.0"]
+    LK [pos="1600.0,900.0"]
+    LR [pos="700.0,900.0"]
+    LS [pos="1200.0,200.0"]
+    LT [pos="1100.0,2150.0"]
+    LU [pos="900.0,2000.0"]
+    LV [pos="1150.0,2150.0"]
+    LY [pos="1050.0,1350.0"]
+    MA [pos="700.0,1550.0"]
+    MC [pos="900.0,1800.0"]
+    MD [pos="1150.0,1950.0"]
+    ME [pos="1050.0,1800.0"]
+    MG [pos="1350.0,400.0"]
+    MK [pos="1150.0,1750.0"]
+    ML [pos="750.0,1200.0"]
+    MM [pos="1700.0,1250.0"]
+    MN [pos="1700.0,1950.0"]
+    MR [pos="650.0,1250.0"]
+    MT [pos="950.0,1650.0"]
+    MU [pos="1450.0,350.0"]
+    MV [pos="1550.0,850.0"]
+    MW [pos="1200.0,500.0"]
+    MX [pos="50.0,1300.0"]
+    MY [pos="1750.0,850.0"]
+    MZ [pos="1250.0,400.0"]
+    NA [pos="1050.0,300.0"]
+    NE [pos="900.0,1200.0"]
+    NG [pos="900.0,950.0"]
+    NI [pos="150.0,1050.0"]
+    NL [pos="900.0,2100.0"]
+    NO [pos="900.0,2250.0"]
+    NP [pos="1600.0,1400.0"]
+    NR [pos="2050.0,750.0"]
+    NU [pos="0.0,400.0"]
+    NZ [pos="2100.0,0.0"]
+    OM [pos="1450.0,1200.0"]
+    PA [pos="200.0,900.0"]
+    PE [pos="250.0,600.0"]
+    PG [pos="1950.0,650.0"]
+    PH [pos="1850.0,1050.0"]
+    PK [pos="1550.0,1450.0"]
+    PL [pos="1050.0,2150.0"]
+    PS [pos="1250.0,1500.0"]
+    PT [pos="700.0,1700.0"]
+    PW [pos="1950.0,900.0"]
+    PY [pos="400.0,350.0"]
+    QA [pos="1400.0,1300.0"]
+    RE [pos="1400.0,350.0"]
+    RO [pos="1200.0,1900.0"]
+    RS [pos="1150.0,1850.0"]
+    RU [pos="1700.0,2250.0"]
+    RW [pos="1200.0,750.0"]
+    SA [pos="1350.0,1300.0"]
+    SB [pos="2050.0,600.0"]
+    SC [pos="1400.0,700.0"]
+    SD [pos="1200.0,1050.0"]
+    SE [pos="1050.0,2200.0"]
+    SG [pos="1750.0,800.0"]
+    SI [pos="1050.0,1900.0"]
+    SK [pos="1050.0,2000.0"]
+    SL [pos="650.0,900.0"]
+    SM [pos="900.0,1750.0"]
+    SN [pos="650.0,1100.0"]
+    SO [pos="1350.0,850.0"]
+    SR [pos="500.0,850.0"]
+    SS [pos="1200.0,900.0"]
+    ST [pos="900.0,750.0"]
+    SV [pos="100.0,1100.0"]
+    SY [pos="1300.0,1600.0"]
+    SZ [pos="1200.0,250.0"]
+    TD [pos="1050.0,1150.0"]
+    TG [pos="850.0,900.0"]
+    TH [pos="1700.0,1150.0"]
+    TJ [pos="1550.0,1700.0"]
+    TL [pos="1900.0,600.0"]
+    TM [pos="1450.0,1700.0"]
+    TN [pos="950.0,1600.0"]
+    TO [pos="0.0,350.0"]
+    TR [pos="1250.0,1700.0"]
+    TT [pos="400.0,950.0"]
+    TV [pos="2100.0,650.0"]
+    TW [pos="1850.0,1300.0"]
+    TZ [pos="1250.0,650.0"]
+    UA [pos="1200.0,2000.0"]
+    UG [pos="1200.0,800.0"]
+    UK [pos="850.0,2150.0"]
+    US [pos="50.0,1650.0"]
+    UY [pos="500.0,150.0"]
+    UZ [pos="1500.0,1750.0"]
+    VA [pos="950.0,1700.0"]
+    VC [pos="400.0,1050.0"]
+    VE [pos="350.0,900.0"]
+    VN [pos="1800.0,1100.0"]
+    VU [pos="2050.0,450.0"]
+    WS [pos="0.0,500.0"]
+    XK [pos="1100.0,1800.0"]
+    YE [pos="1400.0,1150.0"]
+    YT [pos="1300.0,500.0"]
+    ZA [pos="1150.0,200.0"]
+    ZM [pos="1150.0,500.0"]
+    ZW [pos="1150.0,400.0"]
 
-    AD -- ES
-    AD -- FR
-    AE -- OM
-    AE -- SA
-    AF -- CN
-    AF -- IR
-    AF -- PK
-    AF -- TJ
-    AF -- TM
-    AF -- UZ
-    AL -- GR
-    AL -- ME
-    AL -- MK
-    AL -- XK
-    AM -- AZ
-    AM -- GE
-    AM -- IR
-    AM -- TR
-    AO -- CD
-    AO -- CG
-    AO -- NA
-    AO -- ZM
-    AR -- BO
-    AR -- BR
-    AR -- CL
-    AR -- PY
-    AR -- UY
-    AT -- CZ
-    AT -- DE
-    AT -- HU
-    AT -- IT
-    AT -- SI
-    AT -- SK
-    AZ -- GE
-    AZ -- IR
-    AZ -- RU
-    BA -- HR
-    BA -- ME
-    BA -- RS
-    BD -- IN
-    BD -- MM
-    BE -- DE
-    BE -- FR
-    BE -- LU
-    BE -- NL
-    BF -- BJ
-    BF -- CI
-    BF -- GH
-    BF -- ML
-    BF -- NE
-    BF -- TG
-    BG -- GR
-    BG -- RO
-    BG -- RS
-    BI -- CD
-    BI -- RW
-    BI -- TZ
-    BJ -- NE
-    BJ -- NG
-    BJ -- TG
-    BN -- MY
-    BO -- BR
-    BO -- CL
-    BO -- PE
-    BO -- PY
-    BR -- CO
-    BR -- GY
-    BR -- PE
-    BR -- PY
-    BR -- SR
-    BR -- UY
-    BR -- VE
-    BT -- CN
-    BT -- IN
-    BW -- NA
-    BW -- ZA
-    BW -- ZM
-    BW -- ZW
-    BY -- LT
-    BY -- LV
-    BY -- PL
-    BY -- UA
-    BZ -- GT
-    BZ -- MX
-    CA -- US
-    CD -- CF
-    CD -- CG
-    CD -- RW
-    CD -- SS
-    CD -- TZ
-    CD -- UG
-    CD -- ZM
-    CF -- CG
-    CF -- CM
-    CF -- SD
-    CF -- SS
-    CF -- TD
-    CG -- CM
-    CG -- GA
-    AT -- CH
-    CH -- DE
-    CH -- FR
-    CH -- IT
-    CH -- LI
-    CI -- GH
-    CI -- GN
-    CI -- LR
-    CI -- ML
-    CL -- PE
-    CM -- GA
-    CM -- GQ
-    CM -- NG
-    CM -- TD
-    CN -- IN
-    CN -- KG
-    CN -- KP
-    CN -- KZ
-    CN -- LA
-    CN -- MM
-    CN -- MN
-    CN -- NP
-    CN -- RU
-    CN -- TJ
-    CN -- VN
-    CO -- EC
-    CO -- PA
-    CO -- PE
-    CO -- VE
-    CR -- NI
-    CR -- PA
-    CZ -- DE
-    CZ -- PL
-    CZ -- SK
-    DE -- DK
-    DE -- FR
-    DE -- LU
-    DE -- NL
-    DE -- PL
-    DJ -- ER
-    DJ -- ET
-    DO -- HT
-    DZ -- EH
-    DZ -- LY
-    DZ -- MA
-    DZ -- ML
-    DZ -- MR
-    DZ -- NE
-    DZ -- TN
-    EC -- PE
-    EE -- LV
-    EG -- IL
-    EG -- LY
-    EG -- PS
-    EG -- SD
-    EH -- MA
-    EH -- MR
-    ER -- ET
-    ER -- SD
-    ES -- FR
-    ES -- PT
-    ET -- KE
-    ET -- SD
-    ET -- SO
-    ET -- SS
-    FI -- SE
-    FR -- IT
-    FR -- LU
-    GA -- GQ
-    GE -- RU
-    GE -- TR
-    GH -- TG
-    GM -- SN
-    GN -- GW
-    GN -- LR
-    GN -- ML
-    GN -- SL
-    GN -- SN
-    GT -- HN
-    GT -- MX
-    GT -- SV
-    GW -- SN
-    GY -- SR
-    GY -- VE
-    HN -- NI
-    HN -- SV
-    HR -- HU
-    HR -- RS
-    HR -- SI
-    HU -- RO
-    HU -- SI
-    HU -- SK
-    ID -- MY
-    ID -- PG
-    ID -- TL
-    IE -- UK
-    IL -- JO
-    IL -- LB
-    IL -- PS
-    IL -- SY
-    IN -- LK
-    IN -- MM
-    IN -- NP
-    IN -- PK
-    IQ -- IR
-    IQ -- JO
-    IQ -- KW
-    IQ -- SA
-    IQ -- SY
-    IQ -- TR
-    IR -- PK
-    IR -- TM
-    IR -- TR
-    IT -- SI
-    JO -- PS
-    JO -- SA
-    JO -- SY
-    KE -- SO
-    KE -- SS
-    KE -- TZ
-    KE -- UG
-    KG -- KZ
-    KG -- TJ
-    KG -- UZ
-    KH -- LA
-    KH -- TH
-    KH -- VN
-    KP -- KR
-    KP -- RU
-    KW -- SA
-    KZ -- RU
-    KZ -- TM
-    KZ -- UZ
-    LA -- MM
-    LA -- TH
-    LA -- VN
-    LB -- SY
-    AT -- LI
-    LR -- SL
-    LS -- ZA
-    LT -- LV
-    LT -- PL
-    LY -- NE
-    LY -- SD
-    LY -- TD
-    LY -- TN
-    ES -- MA
-    FR -- MC
-    MD -- RO
-    MD -- UA
-    HR -- ME
-    ME -- RS
-    ME -- XK
-    BG -- MK
-    GR -- MK
-    MK -- RS
-    MK -- XK
-    ML -- MR
-    ML -- NE
-    ML -- SN
-    MM -- TH
-    MN -- RU
-    MR -- SN
-    MW -- MZ
-    MW -- TZ
-    MW -- ZM
-    MX -- US
-    MY -- TH
-    MZ -- SZ
-    MZ -- TZ
-    MZ -- ZA
-    MZ -- ZM
-    MZ -- ZW
-    NA -- ZA
-    NA -- ZM
-    NE -- NG
-    NE -- TD
-    NG -- TD
-    FI -- NO
-    NO -- SE
-    OM -- SA
-    OM -- YE
-    PL -- SK
-    QA -- SA
-    RO -- RS
-    BY -- RU
-    EE -- RU
-    FI -- RU
-    LT -- RU
-    LV -- RU
-    NO -- RU
-    PL -- RU
-    RU -- UA
-    RW -- TZ
-    RW -- UG
-    SA -- YE
-    SD -- SS
-    SD -- TD
-    IT -- SM
-    SS -- UG
-    SY -- TR
-    SZ -- ZA
-    TJ -- UZ
-    TM -- UZ
-    BG -- TR
-    GR -- TR
-    TZ -- UG
-    TZ -- ZM
-    HU -- UA
-    PL -- UA
-    RO -- UA
-    SK -- UA
-    IT -- VA
-    RS -- XK
-    ZA -- ZW
-    ZM -- ZW
+    AD -- ES [style=bold color=black]
+    AD -- FR [style=bold color=black]
+    AE -- OM [style=bold color=black]
+    AE -- SA [style=bold color=black]
+    AF -- CN [style=bold color=black]
+    AF -- IR [style=bold color=black]
+    AF -- PK [style=bold color=black]
+    AF -- TJ [style=bold color=black]
+    AF -- TM [style=bold color=black]
+    AF -- UZ [style=bold color=black]
+    AL -- GR [style=bold color=black]
+    AL -- ME [style=bold color=black]
+    AL -- MK [style=bold color=black]
+    AL -- XK [style=bold color=black]
+    AM -- AZ [style=bold color=black]
+    AM -- GE [style=bold color=black]
+    AM -- IR [style=bold color=black]
+    AM -- TR [style=bold color=black]
+    AO -- CD [style=bold color=black]
+    AO -- CG [style=bold color=black]
+    AO -- NA [style=bold color=black]
+    AO -- ZM [style=bold color=black]
+    AR -- BO [style=bold color=black]
+    AR -- BR [style=bold color=black]
+    AR -- CL [style=bold color=black]
+    AR -- PY [style=bold color=black]
+    AR -- UY [style=bold color=black]
+    AT -- CZ [style=bold color=black]
+    AT -- DE [style=bold color=black]
+    AT -- HU [style=bold color=black]
+    AT -- IT [style=bold color=black]
+    AT -- SI [style=bold color=black]
+    AT -- SK [style=bold color=black]
+    AZ -- GE [style=bold color=black]
+    AZ -- IR [style=bold color=black]
+    AZ -- RU [style=bold color=black]
+    BA -- HR [style=bold color=black]
+    BA -- ME [style=bold color=black]
+    BA -- RS [style=bold color=black]
+    BD -- IN [style=bold color=black]
+    BD -- MM [style=bold color=black]
+    BE -- DE [style=bold color=black]
+    BE -- FR [style=bold color=black]
+    BE -- LU [style=bold color=black]
+    BE -- NL [style=bold color=black]
+    BF -- BJ [style=bold color=black]
+    BF -- CI [style=bold color=black]
+    BF -- GH [style=bold color=black]
+    BF -- ML [style=bold color=black]
+    BF -- NE [style=bold color=black]
+    BF -- TG [style=bold color=black]
+    BG -- GR [style=bold color=black]
+    BG -- RO [style=bold color=black]
+    BG -- RS [style=bold color=black]
+    BI -- CD [style=bold color=black]
+    BI -- RW [style=bold color=black]
+    BI -- TZ [style=bold color=black]
+    BJ -- NE [style=bold color=black]
+    BJ -- NG [style=bold color=black]
+    BJ -- TG [style=bold color=black]
+    BN -- MY [style=bold color=black]
+    BO -- BR [style=bold color=black]
+    BO -- CL [style=bold color=black]
+    BO -- PE [style=bold color=black]
+    BO -- PY [style=bold color=black]
+    BR -- CO [style=bold color=black]
+    BR -- GY [style=bold color=black]
+    BR -- PE [style=bold color=black]
+    BR -- PY [style=bold color=black]
+    BR -- SR [style=bold color=black]
+    BR -- UY [style=bold color=black]
+    BR -- VE [style=bold color=black]
+    BT -- CN [style=bold color=black]
+    BT -- IN [style=bold color=black]
+    BW -- NA [style=bold color=black]
+    BW -- ZA [style=bold color=black]
+    BW -- ZM [style=bold color=black]
+    BW -- ZW [style=bold color=black]
+    BY -- LT [style=bold color=black]
+    BY -- LV [style=bold color=black]
+    BY -- PL [style=bold color=black]
+    BY -- UA [style=bold color=black]
+    BZ -- GT [style=bold color=black]
+    BZ -- MX [style=bold color=black]
+    CA -- US [style=bold color=black]
+    CD -- CF [style=bold color=black]
+    CD -- CG [style=bold color=black]
+    CD -- RW [style=bold color=black]
+    CD -- SS [style=bold color=black]
+    CD -- TZ [style=bold color=black]
+    CD -- UG [style=bold color=black]
+    CD -- ZM [style=bold color=black]
+    CF -- CG [style=bold color=black]
+    CF -- CM [style=bold color=black]
+    CF -- SD [style=bold color=black]
+    CF -- SS [style=bold color=black]
+    CF -- TD [style=bold color=black]
+    CG -- CM [style=bold color=black]
+    CG -- GA [style=bold color=black]
+    AT -- CH [style=bold color=black]
+    CH -- DE [style=bold color=black]
+    CH -- FR [style=bold color=black]
+    CH -- IT [style=bold color=black]
+    CH -- LI [style=bold color=black]
+    CI -- GH [style=bold color=black]
+    CI -- GN [style=bold color=black]
+    CI -- LR [style=bold color=black]
+    CI -- ML [style=bold color=black]
+    CL -- PE [style=bold color=black]
+    CM -- GA [style=bold color=black]
+    CM -- GQ [style=bold color=black]
+    CM -- NG [style=bold color=black]
+    CM -- TD [style=bold color=black]
+    CN -- IN [style=bold color=black]
+    CN -- KG [style=bold color=black]
+    CN -- KP [style=bold color=black]
+    CN -- KZ [style=bold color=black]
+    CN -- LA [style=bold color=black]
+    CN -- MM [style=bold color=black]
+    CN -- MN [style=bold color=black]
+    CN -- NP [style=bold color=black]
+    CN -- RU [style=bold color=black]
+    CN -- TJ [style=bold color=black]
+    CN -- VN [style=bold color=black]
+    CO -- EC [style=bold color=black]
+    CO -- PA [style=bold color=black]
+    CO -- PE [style=bold color=black]
+    CO -- VE [style=bold color=black]
+    CR -- NI [style=bold color=black]
+    CR -- PA [style=bold color=black]
+    CZ -- DE [style=bold color=black]
+    CZ -- PL [style=bold color=black]
+    CZ -- SK [style=bold color=black]
+    DE -- DK [style=bold color=black]
+    DE -- FR [style=bold color=black]
+    DE -- LU [style=bold color=black]
+    DE -- NL [style=bold color=black]
+    DE -- PL [style=bold color=black]
+    DJ -- ER [style=bold color=black]
+    DJ -- ET [style=bold color=black]
+    DO -- HT [style=bold color=black]
+    DZ -- EH [style=bold color=black]
+    DZ -- LY [style=bold color=black]
+    DZ -- MA [style=bold color=black]
+    DZ -- ML [style=bold color=black]
+    DZ -- MR [style=bold color=black]
+    DZ -- NE [style=bold color=black]
+    DZ -- TN [style=bold color=black]
+    EC -- PE [style=bold color=black]
+    EE -- LV [style=bold color=black]
+    EG -- IL [style=bold color=black]
+    EG -- LY [style=bold color=black]
+    EG -- PS [style=bold color=black]
+    EG -- SD [style=bold color=black]
+    EH -- MA [style=bold color=black]
+    EH -- MR [style=bold color=black]
+    ER -- ET [style=bold color=black]
+    ER -- SD [style=bold color=black]
+    ES -- FR [style=bold color=black]
+    ES -- PT [style=bold color=black]
+    ET -- KE [style=bold color=black]
+    ET -- SD [style=bold color=black]
+    ET -- SO [style=bold color=black]
+    ET -- SS [style=bold color=black]
+    FI -- SE [style=bold color=black]
+    FR -- IT [style=bold color=black]
+    FR -- LU [style=bold color=black]
+    GA -- GQ [style=bold color=black]
+    GE -- RU [style=bold color=black]
+    GE -- TR [style=bold color=black]
+    GH -- TG [style=bold color=black]
+    GM -- SN [style=bold color=black]
+    GN -- GW [style=bold color=black]
+    GN -- LR [style=bold color=black]
+    GN -- ML [style=bold color=black]
+    GN -- SL [style=bold color=black]
+    GN -- SN [style=bold color=black]
+    GT -- HN [style=bold color=black]
+    GT -- MX [style=bold color=black]
+    GT -- SV [style=bold color=black]
+    GW -- SN [style=bold color=black]
+    GY -- SR [style=bold color=black]
+    GY -- VE [style=bold color=black]
+    HN -- NI [style=bold color=black]
+    HN -- SV [style=bold color=black]
+    HR -- HU [style=bold color=black]
+    HR -- RS [style=bold color=black]
+    HR -- SI [style=bold color=black]
+    HU -- RO [style=bold color=black]
+    HU -- SI [style=bold color=black]
+    HU -- SK [style=bold color=black]
+    ID -- MY [style=bold color=black]
+    ID -- PG [style=bold color=black]
+    ID -- TL [style=bold color=black]
+    IE -- UK [style=bold color=black]
+    IL -- JO [style=bold color=black]
+    IL -- LB [style=bold color=black]
+    IL -- PS [style=bold color=black]
+    IL -- SY [style=bold color=black]
+    IN -- LK [style=bold color=black]
+    IN -- MM [style=bold color=black]
+    IN -- NP [style=bold color=black]
+    IN -- PK [style=bold color=black]
+    IQ -- IR [style=bold color=black]
+    IQ -- JO [style=bold color=black]
+    IQ -- KW [style=bold color=black]
+    IQ -- SA [style=bold color=black]
+    IQ -- SY [style=bold color=black]
+    IQ -- TR [style=bold color=black]
+    IR -- PK [style=bold color=black]
+    IR -- TM [style=bold color=black]
+    IR -- TR [style=bold color=black]
+    IT -- SI [style=bold color=black]
+    JO -- PS [style=bold color=black]
+    JO -- SA [style=bold color=black]
+    JO -- SY [style=bold color=black]
+    KE -- SO [style=bold color=black]
+    KE -- SS [style=bold color=black]
+    KE -- TZ [style=bold color=black]
+    KE -- UG [style=bold color=black]
+    KG -- KZ [style=bold color=black]
+    KG -- TJ [style=bold color=black]
+    KG -- UZ [style=bold color=black]
+    KH -- LA [style=bold color=black]
+    KH -- TH [style=bold color=black]
+    KH -- VN [style=bold color=black]
+    KP -- KR [style=bold color=black]
+    KP -- RU [style=bold color=black]
+    KW -- SA [style=bold color=black]
+    KZ -- RU [style=bold color=black]
+    KZ -- TM [style=bold color=black]
+    KZ -- UZ [style=bold color=black]
+    LA -- MM [style=bold color=black]
+    LA -- TH [style=bold color=black]
+    LA -- VN [style=bold color=black]
+    LB -- SY [style=bold color=black]
+    AT -- LI [style=bold color=black]
+    LR -- SL [style=bold color=black]
+    LS -- ZA [style=bold color=black]
+    LT -- LV [style=bold color=black]
+    LT -- PL [style=bold color=black]
+    LY -- NE [style=bold color=black]
+    LY -- SD [style=bold color=black]
+    LY -- TD [style=bold color=black]
+    LY -- TN [style=bold color=black]
+    ES -- MA [style=bold color=black]
+    FR -- MC [style=bold color=black]
+    MD -- RO [style=bold color=black]
+    MD -- UA [style=bold color=black]
+    HR -- ME [style=bold color=black]
+    ME -- RS [style=bold color=black]
+    ME -- XK [style=bold color=black]
+    BG -- MK [style=bold color=black]
+    GR -- MK [style=bold color=black]
+    MK -- RS [style=bold color=black]
+    MK -- XK [style=bold color=black]
+    ML -- MR [style=bold color=black]
+    ML -- NE [style=bold color=black]
+    ML -- SN [style=bold color=black]
+    MM -- TH [style=bold color=black]
+    MN -- RU [style=bold color=black]
+    MR -- SN [style=bold color=black]
+    MW -- MZ [style=bold color=black]
+    MW -- TZ [style=bold color=black]
+    MW -- ZM [style=bold color=black]
+    MX -- US [style=bold color=black]
+    MY -- TH [style=bold color=black]
+    MZ -- SZ [style=bold color=black]
+    MZ -- TZ [style=bold color=black]
+    MZ -- ZA [style=bold color=black]
+    MZ -- ZM [style=bold color=black]
+    MZ -- ZW [style=bold color=black]
+    NA -- ZA [style=bold color=black]
+    NA -- ZM [style=bold color=black]
+    NE -- NG [style=bold color=black]
+    NE -- TD [style=bold color=black]
+    NG -- TD [style=bold color=black]
+    FI -- NO [style=bold color=black]
+    NO -- SE [style=bold color=black]
+    OM -- SA [style=bold color=black]
+    OM -- YE [style=bold color=black]
+    PL -- SK [style=bold color=black]
+    QA -- SA [style=bold color=black]
+    RO -- RS [style=bold color=black]
+    BY -- RU [style=bold color=black]
+    EE -- RU [style=bold color=black]
+    FI -- RU [style=bold color=black]
+    LT -- RU [style=bold color=black]
+    LV -- RU [style=bold color=black]
+    NO -- RU [style=bold color=black]
+    PL -- RU [style=bold color=black]
+    RU -- UA [style=bold color=black]
+    RW -- TZ [style=bold color=black]
+    RW -- UG [style=bold color=black]
+    SA -- YE [style=bold color=black]
+    SD -- SS [style=bold color=black]
+    SD -- TD [style=bold color=black]
+    IT -- SM [style=bold color=black]
+    SS -- UG [style=bold color=black]
+    SY -- TR [style=bold color=black]
+    SZ -- ZA [style=bold color=black]
+    TJ -- UZ [style=bold color=black]
+    TM -- UZ [style=bold color=black]
+    BG -- TR [style=bold color=black]
+    GR -- TR [style=bold color=black]
+    TZ -- UG [style=bold color=black]
+    TZ -- ZM [style=bold color=black]
+    HU -- UA [style=bold color=black]
+    PL -- UA [style=bold color=black]
+    RO -- UA [style=bold color=black]
+    SK -- UA [style=bold color=black]
+    IT -- VA [style=bold color=black]
+    RS -- XK [style=bold color=black]
+    ZA -- ZW [style=bold color=black]
+    ZM -- ZW [style=bold color=black]
 
 }

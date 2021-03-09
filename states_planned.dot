@@ -54,111 +54,123 @@ strict graph States {
     WV [pos="450.0,200.0"]
     WY [pos="150.0,200.0"]
 
-    AL -- FL
-    AL -- GA
-    AL -- MS
-    AL -- TN
-    AR -- LA
-    AR -- MO
-    AR -- MS
-    AR -- OK
-    AR -- TN
-    AR -- TX
-    AZ -- CA
-    AZ -- NM
-    AZ -- NV
-    AZ -- UT
-    CA -- NV
-    CA -- OR
-    CO -- KS
-    CO -- NE
-    CO -- NM
-    CO -- OK
-    CO -- UT
-    CO -- WY
-    CT -- MA
-    CT -- NY
-    CT -- RI
-    DE -- MD
-    DE -- NJ
-    DE -- PA
-    FL -- GA
-    GA -- NC
-    GA -- SC
-    GA -- TN
-    IA -- IL
-    IA -- MN
-    IA -- MO
-    IA -- NE
-    IA -- SD
-    IA -- WI
-    ID -- MT
-    ID -- NV
-    ID -- OR
-    ID -- UT
-    ID -- WA
-    ID -- WY
-    IL -- IN
-    IL -- KY
-    IL -- MO
-    IL -- WI
-    IN -- KY
-    IN -- MI
-    IN -- OH
-    KS -- MO
-    KS -- NE
-    KS -- OK
-    KY -- MO
-    KY -- OH
-    KY -- TN
-    KY -- VA
-    KY -- WV
-    LA -- MS
-    LA -- TX
-    MA -- NH
-    MA -- NY
-    MA -- RI
-    MA -- VT
-    MD -- PA
-    MD -- VA
-    MD -- WV
-    ME -- NH
-    MI -- OH
-    MI -- WI
-    MN -- ND
-    MN -- SD
-    MN -- WI
-    MO -- NE
-    MO -- OK
-    MO -- TN
-    MS -- TN
-    MT -- ND
-    MT -- SD
-    MT -- WY
-    NC -- SC
-    NC -- TN
-    NC -- VA
-    ND -- SD
-    NE -- SD
-    NE -- WY
-    NH -- VT
-    NJ -- NY
-    NJ -- PA
-    NM -- OK
-    NM -- TX
-    NV -- OR
-    NV -- UT
-    NY -- PA
-    NY -- VT
-    OH -- PA
-    OH -- WV
-    OK -- TX
-    OR -- WA
-    PA -- WV
-    SD -- WY
-    TN -- VA
-    UT -- WY
-    VA -- WV
+    AL -- FL [style=bold color=purple]
+    AL -- GA [style=bold color=limegreen]
+    AL -- MS [style=bold color=limegreen]
+    AL -- TN [style=bold color=blue]
+    AR -- LA [style=bold color=blue]
+    AR -- MO [style=bold color=blue]
+    AR -- MS [style=bold color=red]
+    AR -- OK [style=bold color=limegreen]
+    AR -- TN [style=bold color=limegreen]
+        ARTN [pos="300,100" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+    AR -- TX [style=bold color=red]
+    AZ -- CA [style=bold color=purple]
+    AZ -- NM [style=bold color=limegreen]
+    AZ -- NV [style=bold color=red]
+    AZ -- UT [style=bold color=blue]
+    CA -- NV [style=bold color=limegreen]
+    CA -- OR [style=bold color=blue]
+    CO -- KS [style=bold color=limegreen]
+    CO -- NE [style=bold color=red]
+    CO -- NM [style=bold color=blue]
+    CO -- OK [style=bold color=red]
+    CO -- UT [style=bold color=limegreen]
+    CO -- WY [style=bold color=blue]
+    CT -- MA [style=bold color=red]
+    CT -- NY [style=bold color=red]
+    CT -- RI [style=bold color=limegreen]
+    DE -- MD [style=bold color=limegreen]
+    DE -- NJ [style=bold color=purple]
+    DE -- PA [style=bold color=purple]
+    FL -- GA [style=bold color=red]
+    GA -- NC [style=bold color=purple]
+    GA -- SC [style=bold color=limegreen]
+    GA -- TN [style=bold color=red]
+    IA -- IL [style=bold color=limegreen]
+    IA -- MN [style=bold color=blue]
+        IAMN [pos="250,250" style=filled fillcolor=blue height=0.13999999999999999 width=0.13999999999999999 label=""]
+    IA -- MO [style=bold color=blue]
+    IA -- NE [style=bold color=limegreen]
+    IA -- SD [style=bold color=red]
+    IA -- WI [style=bold color=purple]
+    ID -- MT [style=bold color=red]
+    ID -- NV [style=bold color=blue]
+    ID -- OR [style=bold color=limegreen]
+    ID -- UT [style=bold color=red]
+    ID -- WA [style=bold color=red]
+    ID -- WY [style=bold color=limegreen]
+        IDWY [pos="100,200" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+    IL -- IN [style=bold color=limegreen]
+    IL -- KY [style=bold color=red]
+    IL -- MO [style=bold color=red]
+    IL -- WI [style=bold color=blue]
+        ILWI [pos="300,250" style=filled fillcolor=blue height=0.13999999999999999 width=0.13999999999999999 label=""]
+    IN -- KY [style=bold color=blue]
+    IN -- MI [style=bold color=blue]
+        INMI [pos="350,250" style=filled fillcolor=blue height=0.13999999999999999 width=0.13999999999999999 label=""]
+    IN -- OH [style=bold color=limegreen]
+    KS -- MO [style=bold color=limegreen]
+    KS -- NE [style=bold color=blue]
+    KS -- OK [style=bold color=blue]
+    KY -- MO [style=bold color=limegreen]
+        KYMO [pos="300,150" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+    KY -- OH [style=bold color=red]
+    KY -- TN [style=bold color=blue]
+    KY -- VA [style=bold color=limegreen]
+        KYVA [pos="400,150" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+        KYVA [pos="450,150" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+    KY -- WV [style=bold color=purple]
+    LA -- MS [style=bold color=limegreen]
+    LA -- TX [style=bold color=limegreen]
+    MA -- NH [style=bold color=red]
+    MA -- NY [style=bold color=limegreen]
+        MANY [pos="500,300" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+    MA -- RI [style=bold color=blue]
+    MA -- VT [style=bold color=purple]
+    MD -- PA [style=bold color=purple]
+    MD -- VA [style=bold color=blue]
+    MD -- WV [style=bold color=limegreen]
+    ME -- NH [style=bold color=limegreen]
+    MI -- OH [style=bold color=purple]
+    MI -- WI [style=bold color=limegreen]
+    MN -- ND [style=bold color=limegreen]
+    MN -- SD [style=bold color=red]
+    MN -- WI [style=bold color=limegreen]
+    MO -- NE [style=bold color=red]
+    MO -- OK [style=bold color=red]
+    MO -- TN [style=bold color=purple]
+    MS -- TN [style=bold color=red]
+    MT -- ND [style=bold color=purple]
+    MT -- SD [style=bold color=limegreen]
+        MTSD [pos="150,250" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+    MT -- WY [style=bold color=red]
+    NC -- SC [style=bold color=red]
+    NC -- TN [style=bold color=limegreen]
+        NCTN [pos="400,100" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+        NCTN [pos="450,100" style=filled fillcolor=limegreen height=0.13999999999999999 width=0.13999999999999999 label=""]
+    NC -- VA [style=bold color=blue]
+    ND -- SD [style=bold color=blue]
+    NE -- SD [style=bold color=blue]
+    NE -- WY [style=bold color=limegreen]
+    NH -- VT [style=bold color=limegreen]
+    NJ -- NY [style=bold color=blue]
+    NJ -- PA [style=bold color=limegreen]
+    NM -- OK [style=bold color=limegreen]
+    NM -- TX [style=bold color=red]
+    NV -- OR [style=bold color=red]
+    NV -- UT [style=bold color=limegreen]
+    NY -- PA [style=bold color=red]
+    NY -- VT [style=bold color=blue]
+    OH -- PA [style=bold color=blue]
+    OH -- WV [style=bold color=limegreen]
+    OK -- TX [style=bold color=blue]
+    OR -- WA [style=bold color=blue]
+    PA -- WV [style=bold color=red]
+    SD -- WY [style=bold color=red]
+    TN -- VA [style=bold color=purple]
+    UT -- WY [style=bold color=red]
+    VA -- WV [style=bold color=red]
 
 
     AZ -- CO [color=red style=dashed]
