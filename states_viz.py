@@ -116,11 +116,13 @@ def get_gord(g, s2xy):
         nx.set_node_attributes(gord, values={s:s2yord[s]}, name='y')
     return gord
 
+
 def get_orddict(d, val2sortkey):
     result = { s:ordinal
                for (ordinal, s) in enumerate(sorted(d.keys(), key=lambda k: val2sortkey(d[k])))
              }
     return result
+
 
 def has_items(iterable):
     return iterable and len(iterable) > 0
@@ -257,6 +259,7 @@ def write_dotfile_gridify( g
                          , custom_invisible_edges=[]
                          , is_input_ordinal=False
                          , do_allow_invalid_intersections=False
+                         , do_customize_edge_colors=False
                          , settings=None
                          , verbose=False):
     do_write_gridified = False
@@ -346,7 +349,7 @@ def write_dotfile_gridify( g
         s2x = lambda s: s2xy[s]['x']
         s2y = lambda s: s2xy[s]['y']
 
-        if is_input_ordinal: 
+        if is_input_ordinal:
             gord = deepcopy(g)
         else:
             gord = get_gord(g, s2xy)
@@ -477,6 +480,7 @@ def write_dotfile_gridify( g
                          , custom_visible_edges=custom_visible_edges
                          , custom_visible_edge_attrs=custom_visible_edge_attrs
                          , custom_invisible_edges=custom_invisible_edges
+                         , do_customize_edge_colors=do_customize_edge_colors
                          , settings=settings
                          , verbose=verbose
                          )
@@ -489,9 +493,27 @@ def write_dotfile_planned( g
                          , custom_visible_edges=[]
                          , custom_visible_edge_attrs=''
                          , custom_invisible_edges=[]
-                         , verbose=False
+                         , do_customize_edge_colors=False
                          , settings=None  # dict w/ scale_factor, fontsize, height, width
+                         , verbose=False
                          ):
+
+    def get_edge_color_and_nodes(s2xy, a, b):
+        ax, ay = int(s2xy[a]['x']), int(s2xy[a]['y'])
+        bx, by = int(s2xy[b]['x']), int(s2xy[b]['y'])
+
+        if ax == bx:  # Vertical edge
+            ymin = min(ay, by)
+            ymax = max(ay, by)
+            return 'blue', [(ax, y) for y in range(ymin + 1, ymax)]
+        elif ay == by:  # Horizontal edge
+            xmin = min(ax, bx)
+            xmax = max(ax, bx)
+            return 'limegreen', [(x, ay) for x in range(xmin + 1, xmax)]
+        elif abs(ax - bx) == abs(ay - by):
+            return 'red', []
+        else:
+            return 'purple', []
 
     def write_custom_invisible_edges(f):
         if custom_invisible_edges:
@@ -505,12 +527,22 @@ def write_dotfile_planned( g
                 attrs = f' [{custom_visible_edge_attrs}]' if custom_visible_edge_attrs else ''
                 writeln(f, 1, f'{a} -- {b}{attrs}')
 
-    def write_edges(f):
+    def write_edges(f, scale_factor, height, width):
+        s2xy = {s:xy for s,xy in g.nodes(data=True)}
         for a, b in sorted(g.edges(data=False)):
-            if a < b:
-                writeln(f, 1, f'{a} -- {b}')
+            mn = min(a, b)
+            mx = max(a, b)
+
+            if do_customize_edge_colors:
+                color, edge_nodes = get_edge_color_and_nodes(s2xy, a, b)
             else:
-                writeln(f, 1, f'{b} -- {a}')
+                color, edge_nodes = 'black', []
+            writeln(f, 1, f'{mn} -- {mx} [style=bold color={color}]')
+            for en in edge_nodes:
+                pos_spec = f'pos="{en[0]*scale_factor},{en[1]*scale_factor}"'
+                dims_spec = f'height={height*0.4} width={width*0.4}'
+                attrs = f'{pos_spec} style=filled fillcolor={color} {dims_spec} label=""'
+                writeln(f, 2, f'{mn}{mx} [{attrs}]')
         writeln(f)
         if has_items(custom_visible_edges):
             writeln(f)
@@ -529,6 +561,7 @@ def write_dotfile_planned( g
 
     with open(dotfile, 'w') as f:
         do_write_sig = False  # Enable "signing" resulting viz.
+        scale_factor = 50
 
         writeln(f, 0, 'strict graph States {')
         fontsize = maybe_dict_get(settings, 'fontsize', DEFAULT_PLANNED_FONTSIZE)
@@ -538,14 +571,14 @@ def write_dotfile_planned( g
         writeln(f, 1, 'overlap=false')
         writeln(f, 1, 'penwidth=7')
         writeln(f)
-        write_nodes(f, maybe_dict_get(settings, 'scale_factor', 50))
+        write_nodes(f, scale_factor)
 
         # TODO: Control "signature" initials, placement, etc. with args/config.
         if do_write_sig:
             writeln(f)
             write_sig(f, 'ABC', pos='525.0,25.0', color='lightblue', fontsize=14, height=0.6, width=0.6)
         writeln(f)
-        write_edges(f)
+        write_edges(f, scale_factor, height, width)
         writeln(f, 0, '}')
 
 
@@ -572,8 +605,10 @@ def write_dotfile_springs( g
 
     def write_edges(f):
         for a, b in sorted(g.edges(data=False)):
-            if b > a:  # Avoid duplication
-                writeln(f, 1, f'{a} -- {b}')
+            if a < b:
+                writeln(f, 1, f'{a} -- {b} [style=bold]')
+            else:
+                writeln(f, 1, f'{b} -- {a} [style=bold]')
         if has_items(custom_visible_edges):
             writeln(f)
         write_custom_visible_edges(f)
@@ -683,6 +718,7 @@ def make_dotfile_nations_gridify(nodes_file=INFILE_LATLONG_NATIONS, dotfile=DEFA
                          , custom_invisible_edges=None
                          , is_input_ordinal=nodes_file.endswith('coords')
                          , do_allow_invalid_intersections=True
+                         , do_customize_edge_colors=False
                          , settings={"scale_factor":40, "fontsize":10, "height":0.35, "width":0.35}
                          , verbose=True
                          )
@@ -696,6 +732,7 @@ def make_dotfile_nations_planned(nodes_file=INFILE_LATLONG_NATIONS, dotfile=DEFA
                   )
     write_dotfile_planned( g
                          , dotfile=dotfile
+                         , do_customize_edge_colors=False
                          , settings={"scale_factor":40, "fontsize":10, "height":0.4, "width":0.4}
                          )
 
@@ -716,6 +753,7 @@ def make_dotfile_states_gridify(nodes_file=INFILE_LATLONG_STATES, dotfile=DEFAUL
                          , custom_invisible_edges=None
                          , is_input_ordinal=nodes_file.endswith('coords')
                          , do_allow_invalid_intersections=False
+                         , do_customize_edge_colors=True
                          , settings=None # {"scale_factor":40, "fontsize":10, "height":1.5, "width":1.5}
                          , verbose=True
                          )
@@ -737,6 +775,7 @@ def make_dotfile_states_planned( nodes_file=DEFAULT_COORDS_STATES_V3
                          , dotfile=dotfile if dotfile else DEFAULT_DOTFILE_STATES_PLANNED
                          , custom_visible_edges=STATES_FOUR_CORNERS_EDGES
                          , custom_visible_edge_attrs='color=red style=dashed'
+                         , do_customize_edge_colors=True
                          , settings={"height":0.35, "width":0.35}
                          )
 
