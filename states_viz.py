@@ -260,6 +260,7 @@ def write_dotfile_gridify( g
                          , is_input_ordinal=False
                          , do_allow_invalid_intersections=False
                          , do_customize_edge_colors=False
+                         , do_highlight_lattice_points=False
                          , settings=None
                          , verbose=False):
     do_write_gridified = False
@@ -494,6 +495,7 @@ def write_dotfile_planned( g
                          , custom_visible_edge_attrs=''
                          , custom_invisible_edges=[]
                          , do_customize_edge_colors=False
+                         , do_highlight_lattice_points=False
                          , settings=None  # dict w/ scale_factor, fontsize, height, width
                          , verbose=False
                          ):
@@ -505,11 +507,15 @@ def write_dotfile_planned( g
         if ax == bx:  # Vertical edge
             ymin = min(ay, by)
             ymax = max(ay, by)
-            return 'blue', [(ax, y) for y in range(ymin + 1, ymax)]
+            dots = [(ax, y) for y in range(ymin + 1, ymax)]
+            assert(len(dots) == ymax - ymin - 1)
+            return 'blue', dots
         elif ay == by:  # Horizontal edge
             xmin = min(ax, bx)
             xmax = max(ax, bx)
-            return 'limegreen', [(x, ay) for x in range(xmin + 1, xmax)]
+            dots = [(x, ay) for x in range(xmin + 1, xmax)]
+            assert(len(dots) == xmax - xmin - 1)
+            return 'limegreen', dots
         elif abs(ax - bx) == abs(ay - by):
             return 'red', []
         else:
@@ -527,7 +533,7 @@ def write_dotfile_planned( g
                 attrs = f' [{custom_visible_edge_attrs}]' if custom_visible_edge_attrs else ''
                 writeln(f, 1, f'{a} -- {b}{attrs}')
 
-    def write_edges(f, scale_factor, height, width):
+    def write_edges(f, scale_factor, height, width, do_highlight_lattice_points):
         s2xy = {s:xy for s,xy in g.nodes(data=True)}
         for a, b in sorted(g.edges(data=False)):
             mn = min(a, b)
@@ -538,11 +544,12 @@ def write_dotfile_planned( g
             else:
                 color, edge_nodes = 'black', []
             writeln(f, 1, f'{mn} -- {mx} [style=bold color={color}]')
-            for en in edge_nodes:
-                pos_spec = f'pos="{en[0]*scale_factor},{en[1]*scale_factor}"'
-                dims_spec = f'height={height*0.4} width={width*0.4}'
-                attrs = f'{pos_spec} style=filled fillcolor={color} {dims_spec} label=""'
-                writeln(f, 2, f'{mn}{mx} [{attrs}]')
+            if do_highlight_lattice_points:
+                for k, en in enumerate(edge_nodes):
+                    pos_spec = f'pos="{en[0]*scale_factor},{en[1]*scale_factor}"'
+                    dims_spec = f'height={height*0.4:.2f} width={width*0.4:.2f}'
+                    attrs = f'{pos_spec} style=filled fillcolor={color} {dims_spec} label=""'
+                    writeln(f, 2, f'{mn}{mx}{k} [{attrs}]')
         writeln(f)
         if has_items(custom_visible_edges):
             writeln(f)
@@ -578,7 +585,7 @@ def write_dotfile_planned( g
             writeln(f)
             write_sig(f, 'ABC', pos='525.0,25.0', color='lightblue', fontsize=14, height=0.6, width=0.6)
         writeln(f)
-        write_edges(f, scale_factor, height, width)
+        write_edges(f, scale_factor, height, width, do_highlight_lattice_points)
         writeln(f, 0, '}')
 
 
@@ -719,6 +726,7 @@ def make_dotfile_nations_gridify(nodes_file=INFILE_LATLONG_NATIONS, dotfile=DEFA
                          , is_input_ordinal=nodes_file.endswith('coords')
                          , do_allow_invalid_intersections=True
                          , do_customize_edge_colors=False
+                         , do_highlight_lattice_points=False
                          , settings={"scale_factor":40, "fontsize":10, "height":0.35, "width":0.35}
                          , verbose=True
                          )
@@ -733,6 +741,7 @@ def make_dotfile_nations_planned(nodes_file=INFILE_LATLONG_NATIONS, dotfile=DEFA
     write_dotfile_planned( g
                          , dotfile=dotfile
                          , do_customize_edge_colors=False
+                         , do_highlight_lattice_points=False
                          , settings={"scale_factor":40, "fontsize":10, "height":0.4, "width":0.4}
                          )
 
@@ -754,6 +763,7 @@ def make_dotfile_states_gridify(nodes_file=INFILE_LATLONG_STATES, dotfile=DEFAUL
                          , is_input_ordinal=nodes_file.endswith('coords')
                          , do_allow_invalid_intersections=False
                          , do_customize_edge_colors=True
+                         , do_highlight_lattice_points=False
                          , settings=None # {"scale_factor":40, "fontsize":10, "height":1.5, "width":1.5}
                          , verbose=True
                          )
@@ -776,6 +786,7 @@ def make_dotfile_states_planned( nodes_file=DEFAULT_COORDS_STATES_V3
                          , custom_visible_edges=STATES_FOUR_CORNERS_EDGES
                          , custom_visible_edge_attrs='color=red style=dashed'
                          , do_customize_edge_colors=True
+                         , do_highlight_lattice_points=True
                          , settings={"height":0.35, "width":0.35}
                          )
 
