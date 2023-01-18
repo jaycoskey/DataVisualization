@@ -1,0 +1,66 @@
+// Note: Incomplete visualization aid. Work in progress.
+//       Exercise in both visualization and statistics.
+//       Initial content derived from the Wikipedia page "Relationships among probability distributions".
+//       Will likely end up being an output of some other program.
+strict digraph "Univariate Distributions" {
+    node [fixedsize=true, fontsize=10, shape=octagon, pin=true]
+    overlap=false
+    _penwidth=7
+    splines=true
+
+    // Discrete distributions
+    "NegBin(n,p)"  [pos="0,400"]                  // negbin
+    "Poisson(λ)"   [pos="100,400"]                // poisson
+    "Binom(n,p)"   [pos="200,400"]                // binom
+    "Bern(p)"      [pos="300,400"]                // bern
+    "Geo(p)"       [pos="0,300"]                  // geo
+    "HG(M,N,K)"    [pos="200,300"]                // hgeo
+
+    // Continuous distributions
+    "Weib(a,b)"    [pos="300,300" shape=rectangle style=rounded]  // weibull
+
+    "LogNorm"      [pos="0,200"   shape=rectangle style=rounded]  // lognorm
+    "N(μ,σ^2)"     [pos="100,200" shape=rectangle style=rounded]  // norm
+    "Beta(α,β)"    [pos="200,200" shape=rectangle style=rounded]  // beta
+
+    "Cauchy"       [pos="0,100"   shape=rectangle style=rounded]  // cauchy
+    "N(0,1)"       [pos="100,100" shape=rectangle style=rounded]  // norm01
+    "Gamma(r,λ)"   [pos="200,100" shape=rectangle style=rounded]  // gamma
+    "Exp(λ)"       [pos="300,100" shape=rectangle style=rounded]  // exp
+    "Unif(0,1)"    [pos="400,100" shape=rectangle style=rounded]  // unif01
+
+    "t(v)"         [pos="0,0"     shape=rectangle style=rounded]  // t
+    "F(V1,V2)"     [pos="100,0"   shape=rectangle style=rounded]  // f
+    "ChiSq(n)"     [pos="200,0"   shape=rectangle style=rounded]  // chi2
+    "DoubleExp"    [pos="300,0"   shape=rectangle style=rounded]  // exp2
+    "Unif(a,b)"    [pos="400,0"   shape=rectangle style=rounded]  // unif
+
+    // Self-relations
+    "Cauchy":ne     -> "Cauchy":se     [fontsize=10 xlabel="Σ, 1/X"]
+    "ChiSq(n)":ne   -> "ChiSq(n)":se   [fontsize=10 xlabel="Σ"]
+    "Exp(λ)":ne     -> "Exp(λ)":se     [fontsize=10 xlabel="min"]
+    "Geo(p)":s      -> "Geo(p)":e      [fontsize=10 xlabel="min"]
+    "LogNorm":ne    -> "LogNorm":se    [fontsize=10 xlabel="Π"]
+    "N(μ,σ^2)":ne   -> "N(μ,σ^2)":se   [fontsize=10 xlabel="Σ"]
+    "Poisson(λ)":ne -> "Poisson(λ)":se [fontsize=10 xlabel="Σ"]
+
+    // Discrete-Discrete relations
+    "Beta(α,β)":e    -> "Unif(0,1)":n    [fontsize=10 xlabel="α=β=1\n\n"]
+
+    "DoubleExp":nw   -> "Exp(λ)":sw      [fontsize=10 xlabel="|X|"]
+    "Exp(λ)":se      -> "DoubleExp":ne   [fontsize=10 xlabel="X1-X2"]
+
+    "Exp(λ)":nw      -> "Weib(a,b)":sw   [fontsize=10 xlabel="X^(1/b)"]
+    "Weib(a,b)":se   -> "Exp(λ)":ne      [fontsize=10 xlabel="b=1"]
+
+    "Geo(p)":nw      -> "NegBin(n,p)":sw [fontsize=10 xlabel="Σ"]
+    "NegBin(n,p)":se -> "Geo(p)":ne      [fontsize=10 xlabel="n=1"]
+
+    "LogNorm":ne     -> "N(μ,σ^2)":nw    [fontsize=10 xlabel="ln"]
+
+    "NegBin(n,p)":ne -> "Poisson(λ)":nw  [fontsize=10 xlabel="n ➔ ∞", style=dashed]
+    "Poisson(λ)":sw  -> "NegBin(n,p)":se [fontsize=10 xlabel="λ=n(1-p)" style=dashed]
+
+    "Unif(0,1)":sw   -> "Unif(a,b)":nw   [fontsize=10 xlabel="a+(b-a)X"]
+    "Unif(a,b)":ne   -> "Unif(0,1)":se   [fontsize=10 xlabel="\n\n\na=0\nb=1"]
+}
